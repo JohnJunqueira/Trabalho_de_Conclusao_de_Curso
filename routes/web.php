@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\PrestadorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +20,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+//Rota admin
+Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
+->middleware(['auth', 'admin'])
+->name('admin.dashboard');
+
+//Rota prestador
+Route::get('prestador/dashboard', [PrestadorController::class, 'dashboard'])->middleware(['auth', 'prestador'])
+->name('prestador.dashboard');
