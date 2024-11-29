@@ -27,5 +27,6 @@ Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
 ->name('admin.dashboard');
 
 //Rota prestador
-Route::get('prestador/dashboard', [PrestadorController::class, 'dashboard'])->middleware(['auth', 'prestador'])
+Route::get('prestador/dashboard', [PrestadorController::class, 'dashboard'])
+->middleware(['auth', 'prestador'])
 ->name('prestador.dashboard');
