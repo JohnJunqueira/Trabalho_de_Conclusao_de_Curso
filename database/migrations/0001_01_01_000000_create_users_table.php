@@ -15,10 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('role', ['admin', 'prestador', 'usercliente'])->default('usercliente');
-            $table->enum('status', ['active', 'inative'])->default('active');
+            //$table->enum('status', ['active', 'inative'])->default('active');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            //$table->string('apelidoprofissional', 60);
+            //$table->enum('genero', ['Masculino', 'Feminino', 'Prefiro não dizer']);
+            //$table->date('datadenascimento');
+            //$table->string('celular', 45);
             $table->rememberToken();
             $table->timestamps();
         });
