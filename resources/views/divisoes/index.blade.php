@@ -61,7 +61,7 @@
                 <thead>
                     <tr>
                         <th>Divisões</th>
-                        <th>SubCategorias</th>
+                        <th>Categorias</th>
                     </tr>
                 </thead>
 
@@ -69,7 +69,7 @@
                 <tbody class="conteudo-itens">
                     <tr>
                         <td>{{$divisao->nomedivisoes}}</td>
-                        <td>{{$divisao->acessarSubcategoria->nomesubcategoria}}</td>
+                        <td>{{$divisao->acessarcategoria->nomecategoria}}</td>
 
                         <td>
                             <div class="col" id="meio">

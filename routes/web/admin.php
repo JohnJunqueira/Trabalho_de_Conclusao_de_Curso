@@ -8,7 +8,6 @@ use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\EnderecoController;
 use Illuminate\Support\Facades\Route;
 
-
 //Rota admin
 Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
 ->middleware(['auth', 'admin'])
@@ -23,17 +22,6 @@ Route::prefix('categorias')->group(function () {
     Route::get('/edit/{id}', [CategoriaController::class, 'edit'])->middleware(['auth'])->name('categorias.edit');
     Route::post('/update/{id}', [CategoriaController::class, 'update'])->middleware(['auth'])->name('categorias.update');
     Route::delete('/delete/{id}', [CategoriaController::class, 'destroy'])->middleware(['auth'])->name('categorias.delete');
-});
-
-//Subcategorias
-Route::prefix('subcategorias')->group(function () {
-    Route::get('/index', [SubcategoriaController::class, 'index'])->middleware(['auth'])->name('subcategorias.index');
-    Route::get('/create', [SubcategoriaController::class, 'create'])->middleware(['auth'])->name('subcategorias.create');
-    Route::post('/store', [SubcategoriaController::class, 'store'])->middleware(['auth'])->name('subcategorias.store');
-    Route::get('/show/{id}',[SubcategoriaController::class,'show'])->middleware(['auth'])->name('subcategorias.show');
-    Route::get('/edit/{id}', [SubcategoriaController::class, 'edit'])->middleware(['auth'])->name('subcategorias.edit');
-    Route::put('/update/{id}', [SubcategoriaController::class, 'update'])->middleware(['auth'])->name('subcategorias.update');
-    Route::delete('/delete/{id}', [SubcategoriaController::class, 'destroy'])->middleware(['auth'])->name('subcategorias.delete');
 });
 
 //Divisoes
@@ -57,3 +45,4 @@ Route::prefix('enderecos')->group(function () {
     Route::post('/update/{id}', [EnderecoController::class, 'update'])->middleware(['auth'])->name('enderecos.update');
     Route::delete('/delete/{id}', [EnderecoController::class, 'destroy'])->middleware(['auth'])->name('enderecos.delete');
 });
+

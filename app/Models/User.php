@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role', // Adicione este campo
         //'apelidoprofissional',
         //'genero',
         //'datadenascimento',

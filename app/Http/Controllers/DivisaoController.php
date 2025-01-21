@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Divisao;
-use App\Models\Subcategoria;
+use App\Models\Categoria;
 use Illuminate\Database\QueryException;
 
 class DivisaoController extends Controller
@@ -17,15 +17,15 @@ class DivisaoController extends Controller
 
     public function create()
     {
-        $subcategorias = Subcategoria::all();
-        return view('divisoes.create', ['subcategorias' => $subcategorias]);
+        $categorias = Categoria::all();
+        return view('divisoes.create', ['categorias' => $categorias]);
     }
 
     //Método post enviando dados pela requisição-> Request $request;
     public function store(Request $request){
         $divisoes = new Divisao();
         $divisoes->nomedivisoes = $request->nomedivisoes;
-        $divisoes->subcategoria_id = $request->subcategoria_id;
+        $divisoes->categoria_id = $request->categoria_id;
         $divisoes->save();
         return redirect()->route('divisoes.index');
     }
@@ -33,8 +33,8 @@ class DivisaoController extends Controller
     public function edit($id)
     {
         $Divisao = Divisao::findorFail($id);
-        $subcategorias = Subcategoria::all();
-        return view('divisoes.edit',['Divisao'=>$Divisao, 'subcategorias' => $subcategorias]);
+        $categorias = Categoria::all();
+        return view('divisoes.edit',['Divisao'=>$Divisao, 'categorias' => $categorias]);
     }
 
     public function update (Request $request)

@@ -11,9 +11,9 @@ class Divisao extends Model
 
     protected $table = "divisoes";
 
-    protected $fillable = ['nomedivisoes', 'subcategoria_id'];
+    protected $fillable = ['nomedivisoes', 'categoria_id'];
 
-    public function acessarSubcategoria(){
-        return $this->belongsTo(Subcategoria::class, 'subcategoria_id');
+    public function acessarCategoria(){
+        return $this->belongsTo(Categoria::class, 'categoria_id');
     }
-} 
+}

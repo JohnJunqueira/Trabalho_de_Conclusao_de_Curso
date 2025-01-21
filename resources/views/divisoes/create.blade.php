@@ -63,14 +63,14 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="subcategoria_id" class="m-2 textoAzul3">SubCategoria</label>
-                        <select name="subcategoria_id" id="subcategoria_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($subcategorias->isEmpty())
-                            <option value="" disabled>Nenhuma subcategoria cadastrada</option>
+                        <label for="categoria_id" class="m-2 textoAzul3">Categoria</label>
+                        <select name="categoria_id" id="categoria_id" class="w-auto form-control w-sm-auto" required>
+                            @if ($categorias->isEmpty())
+                            <option value="" disabled>Nenhuma categoria cadastrada</option>
                             @else
-                            <option value="" disabled selected>Selecione a SubCategoria</option>
-                            @foreach($subcategorias as $subcategoria)
-                            <option value="{{ $subcategoria->id }}">{{ $subcategoria->nomesubcategoria }}</option>
+                            <option value="" disabled selected>Selecione a Categoria</option>
+                            @foreach($categorias as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->nomecategoria }}</option>
                             @endforeach
                             @endif
                         </select>
