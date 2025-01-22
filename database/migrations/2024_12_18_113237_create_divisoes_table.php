@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nomedivisoes', 80);
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->softDeletes();
         });
     }
 
