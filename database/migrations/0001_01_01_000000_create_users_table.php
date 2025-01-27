@@ -14,17 +14,19 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            //$table->enum('role', ['admin', 'prestador', 'usercliente'])->default('usercliente');
+            $table->string('apelidoprofissional')->nullable(false);
+            $table->string('genero')->nullable(false);
+            $table->date('datadenascimento')->nullable(false);
+            $table->string('celular')->nullable(false);
             $table->string('role')->default('cliente'); // cliente por padrão
-            //$table->enum('status', ['active', 'inative'])->default('active');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            //$table->string('apelidoprofissional', 60);
+            //$table->enum('status', ['active', 'inative'])->default('active');
+            //$table->enum('role', ['admin', 'prestador', 'usercliente'])->default('usercliente');
             //$table->enum('genero', ['Masculino', 'Feminino', 'Prefiro não dizer']);
-            //$table->date('datadenascimento');
-            //$table->string('celular', 45);
+
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

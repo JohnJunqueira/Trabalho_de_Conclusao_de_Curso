@@ -20,13 +20,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'apelidoprofissional',
+        'genero',
+        'datadenascimento',
+        'celular',
         'email',
         'password',
         'role', // Adicione este campo
-        //'apelidoprofissional',
-        //'genero',
-        //'datadenascimento',
-        //'celular',
     ];
 
     /**

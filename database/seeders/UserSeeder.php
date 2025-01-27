@@ -15,36 +15,12 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'John Junqueira',
+                'name' => 'John Junqueira Aranha',
                 'email' => 'johncba2015@hotmail.com',
                 'role' => 'admin',
-                //'status' => 'active',
                 'password' => bcrypt('password')
             ],
 
-            [
-                'name' => 'João Prestador',
-                'email' => 'joaoprestador@gmail.com',
-                'role' => 'prestador',
-                //'status' => 'active',
-                'password' => bcrypt('password')
-                //'apelidoprofissional' => 'Prestador João',
-                //'genero' => 'Masculino',
-                //'datadenascimento' => '23/09/1965',
-                //'celular' => '(77) 981098254'
-            ],
-
-            [
-                'name' => 'Cliente user Maria',
-                'email' => 'mariausercliente@gmail.com',
-                'role' => 'usercliente',
-                //'status' => 'active',
-                'password' => bcrypt('password'),
-                //'apelidoprofissional' => 'Cliente Maria',
-                //'genero' => 'Feminino',
-                //'datadenascimento' => '25/04/1980',
-                //'celular' => '(77) 981765432'
-            ]
         ]);
     }
 }
