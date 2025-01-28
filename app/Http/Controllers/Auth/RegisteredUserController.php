@@ -55,6 +55,15 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // Lógica de redirecionamento de usuário com base na role
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif ($user->role === 'prestador') {
+            return redirect()->route('prestador.dashboard');
+        } elseif ($user->role === 'cliente') {
+            return redirect()->route('dashboard');
+        } else {
+            return redirect('login')->with('error', 'Erro ao redirecionar para o dashboard apropriado.');
+        }
     }
 }

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
        DB::table('users')->insert([
             [
                 'name' => 'John Junqueira Aranha',
-                'apelidoprofissional' => 'Administrador do sistema',
+                'apelidoprofissional' => 'Administrador do Sistema',
                 'genero' => 'Não identificado',
                 'datadenascimento' => '2025/01/27',
                 'celular' => 'Não identificado',

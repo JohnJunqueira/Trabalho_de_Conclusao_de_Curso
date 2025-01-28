@@ -18,14 +18,14 @@
 
         <!-- Gênero -->
         <div class="mt-4">
-            <x-input-label for="genero" :value="__('Gênero*')" />
+            <x-input-label for="genero" :value="__('Gênero')" />
             <select id="genero" name="genero" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
                 <option value="" disabled selected>Selecione</option>
                 <option value="masculino">Masculino</option>
                 <option value="feminino">Feminino</option>
                 <option value="prefironaodizer">Prefiro não dizer</option>
             </select>
-            <x-input-error :messages="$errors->get('genero')" class="mt-2" />
+            <x-input-error class="mt-2" :messages="$errors->get('genero')" />
         </div>
 
         <!-- Data de Nascimento -->
