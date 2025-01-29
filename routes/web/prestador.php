@@ -5,7 +5,7 @@ use App\Http\Controllers\ServicoController;
 use Illuminate\Support\Facades\Route;
 
 
-//Rota prestador
+//Rotas Prestador
 Route::get('prestador/dashboard', [PrestadorController::class, 'dashboard'])
 ->middleware(['auth', 'prestador'])
 ->name('prestador.dashboard');

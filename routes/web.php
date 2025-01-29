@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OfertaController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Rotas Cliente
 
 //Chamando rotas MSFLIX organizadas
 foreach(File::allFiles(__DIR__.'/web') as $route_file){
-    require $route_file->getPathname();
+   require $route_file->getPathname();
 }
 
 

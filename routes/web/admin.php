@@ -4,11 +4,10 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DivisaoController;
-use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\EnderecoController;
 use Illuminate\Support\Facades\Route;
 
-//Rota admin
+//Rotas Admin
 Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
 ->middleware(['auth', 'admin'])
 ->name('admin.dashboard');
