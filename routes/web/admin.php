@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DivisaoController;
 use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //Rotas Admin
@@ -44,4 +45,31 @@ Route::prefix('enderecos')->group(function () {
     Route::post('/update/{id}', [EnderecoController::class, 'update'])->middleware(['auth'])->name('enderecos.update');
     Route::delete('/delete/{id}', [EnderecoController::class, 'destroy'])->middleware(['auth'])->name('enderecos.delete');
 });
+
+//Users
+Route::prefix('users')->group(function () {
+    Route::get('/prestadores', [UserController::class, 'listarPrestadores'])->name('users.prestadores');
+    Route::get('/clientes', [UserController::class, 'listarClientes'])->name('users.clientes');
+    // Rota para editar dados de ambos usuários
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    // Rota para atualizar os dados (PATCH ou PUT)
+    Route::put('/{id}', [UserController::class, 'update'])->name('users.update');
+    // Rota para excluir usuário
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
