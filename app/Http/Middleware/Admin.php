@@ -16,8 +16,18 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $user = $request->user();
+
         if(auth::user()->role != 'admin'){
-            return redirect('/');
+            // Redirecionamento com mensagem de erro
+            if ($user->role === 'cliente') {
+                return redirect()->route('dashboard')->with('error', 'Acesso negado! Apenas administradores podem acessar essa página.');
+            } elseif ($user->role === 'prestador') {
+                return redirect()->route('prestador.dashboard')->with('error', 'Acesso negado! Apenas administradores podem acessar essa página.');
+            }
+            return redirect()->route('home')->with('error', 'Acesso negado.');
+
+            //return redirect('/');
         }
         return $next($request);
     }

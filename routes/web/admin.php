@@ -15,35 +15,28 @@ Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
 
 //Categorias
 Route::prefix('categorias')->group(function () {
+
+    //  Qualquer usuário autenticado pode visualizar categorias
     Route::get('/index', [CategoriaController::class, 'index'])->middleware(['auth'])->name('categorias.index');
-    Route::get('/create', [CategoriaController::class, 'create'])->middleware(['auth'])->name('categorias.create');
-    Route::post('/store', [CategoriaController::class, 'store'])->middleware(['auth'])->name('categorias.store');
     Route::get('/show/{id}',[CategoriaController::class,'show'])->middleware(['auth'])->name('categorias.show');
-    Route::get('/edit/{id}', [CategoriaController::class, 'edit'])->middleware(['auth'])->name('categorias.edit');
-    Route::post('/update/{id}', [CategoriaController::class, 'update'])->middleware(['auth'])->name('categorias.update');
-    Route::delete('/delete/{id}', [CategoriaController::class, 'destroy'])->middleware(['auth'])->name('categorias.delete');
+
+    // Apenas admin pode criar, editar e excluir categorias
+    Route::get('/create', [CategoriaController::class, 'create'])->middleware(['auth','admin'])->name('categorias.create');
+    Route::post('/store', [CategoriaController::class, 'store'])->middleware(['auth','admin'])->name('categorias.store');
+    Route::get('/edit/{id}', [CategoriaController::class, 'edit'])->middleware(['auth','admin'])->name('categorias.edit');
+    Route::post('/update/{id}', [CategoriaController::class, 'update'])->middleware(['auth','admin'])->name('categorias.update');
+    Route::delete('/delete/{id}', [CategoriaController::class, 'destroy'])->middleware(['auth','admin'])->name('categorias.delete');
 });
 
 //Divisoes
 Route::prefix('divisoes')->group(function () {
     Route::get('/index', [DivisaoController::class, 'index'])->middleware(['auth'])->name('divisoes.index');
-    Route::get('/create', [DivisaoController::class, 'create'])->middleware(['auth'])->name('divisoes.create');
-    Route::post('/store', [DivisaoController::class, 'store'])->middleware(['auth'])->name('divisoes.store');
     Route::get('/show/{id}',[DivisaoController::class,'show'])->middleware(['auth'])->name('divisoes.show');
-    Route::get('/edit/{id}', [DivisaoController::class, 'edit'])->middleware(['auth'])->name('divisoes.edit');
-    Route::post('/update/{id}', [DivisaoController::class, 'update'])->middleware(['auth'])->name('divisoes.update');
-    Route::delete('/delete/{id}', [DivisaoController::class, 'destroy'])->middleware(['auth'])->name('divisoes.delete');
-});
-
-//Endereços
-Route::prefix('enderecos')->group(function () {
-    Route::get('/index', [EnderecoController::class, 'index'])->middleware(['auth'])->name('enderecos.index');
-    Route::get('/create', [EnderecoController::class, 'create'])->middleware(['auth'])->name('enderecos.create');
-    Route::post('/store', [EnderecoController::class, 'store'])->middleware(['auth'])->name('enderecos.store');
-    Route::get('/show/{id}',[EnderecoController::class,'show'])->middleware(['auth'])->name('enderecos.show');
-    Route::get('/edit/{id}', [EnderecoController::class, 'edit'])->middleware(['auth'])->name('enderecos.edit');
-    Route::post('/update/{id}', [EnderecoController::class, 'update'])->middleware(['auth'])->name('enderecos.update');
-    Route::delete('/delete/{id}', [EnderecoController::class, 'destroy'])->middleware(['auth'])->name('enderecos.delete');
+    Route::get('/create', [DivisaoController::class, 'create'])->middleware(['auth','admin'])->name('divisoes.create');
+    Route::post('/store', [DivisaoController::class, 'store'])->middleware(['auth','admin'])->name('divisoes.store');
+    Route::get('/edit/{id}', [DivisaoController::class, 'edit'])->middleware(['auth','admin'])->name('divisoes.edit');
+    Route::post('/update/{id}', [DivisaoController::class, 'update'])->middleware(['auth','admin'])->name('divisoes.update');
+    Route::delete('/delete/{id}', [DivisaoController::class, 'destroy'])->middleware(['auth','admin'])->name('divisoes.delete');
 });
 
 //Users
@@ -59,7 +52,43 @@ Route::prefix('users')->group(function () {
 
 });
 
+//Endereços
+Route::prefix('enderecos')->group(function () {
+    Route::get('/index', [EnderecoController::class, 'index'])->middleware(['auth'])->name('enderecos.index');
+    Route::get('/create', [EnderecoController::class, 'create'])->middleware(['auth','prestadorOrAdmin'])->name('enderecos.create');
+    Route::post('/store', [EnderecoController::class, 'store'])->middleware(['auth'])->name('enderecos.store');
+    Route::get('/show/{id}',[EnderecoController::class,'show'])->middleware(['auth'])->name('enderecos.show');
+    Route::get('/edit/{id}', [EnderecoController::class, 'edit'])->middleware(['auth'])->name('enderecos.edit');
+    Route::post('/update/{id}', [EnderecoController::class, 'update'])->middleware(['auth'])->name('enderecos.update');
+    Route::delete('/delete/{id}', [EnderecoController::class, 'destroy'])->middleware(['auth'])->name('enderecos.delete');
+});
 
+
+// Rascunhos e observações
+/***
+    Route::get('/area-prestador', [PrestadorController::class, 'index'])
+    ->middleware(['auth', 'can:acesso-prestador']);
+
+    Route::get('/area-cliente', [ClienteController::class, 'index'])
+    ->middleware(['auth', 'can:acesso-cliente']);
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth']);
+
+
+    Route::get('/admin', [AdminController::class, 'index'])
+    ->middleware(['auth', 'can:admin']);
+    */
+
+    ///////////////////////////////////////////////////////////////////
+
+
+    /***Route::get('/teste-gate', function () {
+    if (auth()->user()->can('qualquer-coisa')) {
+        return "Acesso permitido!";
+    }
+    return "Acesso negado!";
+    })->middleware('auth');*/
 
 
 

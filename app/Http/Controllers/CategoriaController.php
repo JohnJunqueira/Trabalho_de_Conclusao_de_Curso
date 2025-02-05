@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 use Illuminate\Database\QueryException;
 
+
 class CategoriaController extends Controller
 {
     public function index()

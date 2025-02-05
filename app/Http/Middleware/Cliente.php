@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Prestador
+class Cliente
 {
     /**
      * Handle an incoming request.
@@ -18,12 +18,12 @@ class Prestador
     {
         $user = $request->user();
 
-        if(auth::user()->role != 'prestador'){
-            // Redirecionamento com mensagem de erro
+        if(auth::user()->role != 'cliente'){
+            // Mensagem de erro e redirecionamento correto
             if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard')->with('error', 'Acesso negado! Apenas prestadores podem acessar essa página.');
-            } elseif ($user->role === 'cliente') {
-                return redirect()->route('dashboard')->with('error', 'Acesso negado! Apenas prestadores podem acessar essa página.');
+                return redirect()->route('admin.dashboard')->with('error', 'Acesso negado! Apenas clientes podem acessar essa página.');
+            } elseif ($user->role === 'prestador') {
+                return redirect()->route('prestador.dashboard')->with('error', 'Acesso negado! Apenas clientes podem acessar essa página.');
             }
             return redirect()->route('home')->with('error', 'Acesso negado.');
 

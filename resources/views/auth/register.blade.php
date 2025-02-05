@@ -54,7 +54,7 @@
             <x-input-label for="role" :value="__('Como deseja se Cadastar*')" />
             <select id="role" name="role" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
                 <option value="" disabled selected>Escolha uma Opção</option>
-                <option value="cliente" {{ old('role') == 'usercliente' ? 'selected' : '' }}>Cliente</option>
+                <option value="cliente" {{ old('role') == 'cliente' ? 'selected' : '' }}>Cliente</option>
                 <option value="prestador" {{ old('role') == 'prestador' ? 'selected' : '' }}>Prestador(a)</option>
             </select>
             <x-input-error :messages="$errors->get('role')" class="mt-2" />

@@ -18,9 +18,14 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\Admin::class,
             'prestador' => \App\Http\Middleware\Prestador::class,
-            'usercliente' => \App\Http\Middleware\Usercliente::class,
+            'cliente' => \App\Http\Middleware\Cliente::class,
+            'prestadorOrAdmin' => \App\Http\Middleware\PrestadorOrAdmin::class,
+            'clienteOrAdmin' => \App\Http\Middleware\ClienteOrAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+
+
+

@@ -28,7 +28,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('servicos.index')" :active="request()->routeIs('prestador.dashboard')">
-                        {{ __('Seus Serviços') }}
+                        {{ __('Meus Serviços') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.editprestador')">
                             {{ __('Meus Dados') }}
                         </x-dropdown-link>
 
@@ -95,7 +95,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('profile.editprestador')">
                     {{ __('Perfil') }}
                 </x-responsive-nav-link>
 

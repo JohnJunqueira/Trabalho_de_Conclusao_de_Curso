@@ -22,18 +22,17 @@ class UserController extends Controller
 
     // Mostrar formulário de edição
     public function edit($id)
-{
-    $user = User::findOrFail($id);
+    {
+        $user = User::findOrFail($id);
 
-    if ($user->role === 'cliente') {
-        return view('users.editcliente', compact('user'));
-    } elseif ($user->role === 'prestador') {
-        return view('users.editprestador', compact('user'));
-    } else {
-        return redirect()->route('users.index')->with('error', 'Tipo de usuário inválido.');
+        if ($user->role === 'cliente') {
+            return view('users.editcliente', compact('user'));
+        } elseif ($user->role === 'prestador') {
+            return view('users.editprestador', compact('user'));
+        } else {
+            return redirect()->route('users.index')->with('error', 'Tipo de usuário inválido.');
+        }
     }
-}
-
 
     // Atualizar dados do Cliente
     public function update(Request $request, $id)
@@ -45,12 +44,9 @@ class UserController extends Controller
 
         // Validação dos dados
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,'.$id,
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255|unique:users,email,'.$id,
         ]);
-
-        // Atualiza os dados
-        $user->update($request->all());
 
         // Atualiza os dados
         $user->update($request->all());

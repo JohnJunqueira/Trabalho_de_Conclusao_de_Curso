@@ -1,6 +1,6 @@
 
 
-<x-app-layout>
+<x-admin-layout>
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -23,4 +23,4 @@
 
 
     <a href="{{ route('users.clientes') }}" class="btn btn-secondary">Cancelar</a>
-</x-app-layout>
+</x-admin-layout>
