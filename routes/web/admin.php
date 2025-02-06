@@ -64,33 +64,6 @@ Route::prefix('enderecos')->group(function () {
 });
 
 
-// Rascunhos e observações
-/***
-    Route::get('/area-prestador', [PrestadorController::class, 'index'])
-    ->middleware(['auth', 'can:acesso-prestador']);
-
-    Route::get('/area-cliente', [ClienteController::class, 'index'])
-    ->middleware(['auth', 'can:acesso-cliente']);
-
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth']);
-
-
-    Route::get('/admin', [AdminController::class, 'index'])
-    ->middleware(['auth', 'can:admin']);
-    */
-
-    ///////////////////////////////////////////////////////////////////
-
-
-    /***Route::get('/teste-gate', function () {
-    if (auth()->user()->can('qualquer-coisa')) {
-        return "Acesso permitido!";
-    }
-    return "Acesso negado!";
-    })->middleware('auth');*/
-
-
 
 
 

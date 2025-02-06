@@ -45,7 +45,7 @@
     <a href="" id="categorias" class="ms-5 text-start badge text-wrap sinalizador">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
-        </svg> 
+        </svg>
     </a>
 
 
@@ -70,11 +70,10 @@
                         <th>Status</th>
                         <th>Localização</th>
                         <th>Contato Disponível</th>
-                        <th>Anexo</th>
                         <th>Frequência</th>
                         <th>Dias e Horários de Preferência</th>
-                        <th>Usuário</th>
                         <th>Categoria</th>
+                        <th>Usuário</th>
                     </tr>
                 </thead>
 
@@ -85,16 +84,15 @@
                         <td>{{$oferta->descricaodaoferta}}</td>
                         <td>{{$oferta->urgencia}}</td>
                         <td>{{$oferta->valorestimado}}</td>
-                        <td>{{ \Carbon\Carbon::parse($oferta->datapublicacao)->format('d/m/Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($oferta->datapublicacao)->format('d/m/Y H:i') }}</td>
                         <td>{{ \Carbon\Carbon::parse($oferta->datalimite)->format('d/m/Y') }}</td>
                         <td>{{$oferta->status}}</td>
                         <td>{{$oferta->localizacao}}</td>
                         <td>{{$oferta->contatodisponivel}}</td>
-                        <td>{{$oferta->anexo}}</td>
                         <td>{{$oferta->frequencia}}</td>
                         <td>{{ $oferta->disponibilidadecliente}}</td>
-                        <td>{{$oferta->acessarUsuario->name}}</td>
                         <td>{{$oferta->acessarCategoria->nomecategoria}}</td>
+                        <td>{{$oferta->acessarUsuario->name}}</td>
 
                         <td>
                             <div class="col" id="meio">

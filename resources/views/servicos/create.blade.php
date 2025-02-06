@@ -104,31 +104,30 @@
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="datacadastro" class="m-2 textoAzul3">Data do Cadastro</label>
-                        <input type="datetime-local" id="datacadastro" class="w-auto form-control w-sm-auto" placeholder="" name="datacadastro" required>
+                        <input type="datetime-local" id="datacadastro" class="w-auto form-control w-sm-auto" placeholder="" name="datacadastro" required readonly>
                     </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            let agora = new Date();
+                            let ano = agora.getFullYear();
+                            let mes = String(agora.getMonth() + 1).padStart(2, '0');
+                            let dia = String(agora.getDate()).padStart(2, '0');
+                            let horas = String(agora.getHours()).padStart(2, '0');
+                            let minutos = String(agora.getMinutes()).padStart(2, '0');
+
+                            let dataHoraFormatada = `${ano}-${mes}-${dia}T${horas}:${minutos}`;
+                            document.getElementById("datacadastro").value = dataHoraFormatada;
+                        });
+                    </script>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="portfolio" class="m-2 textoAzul3">Portfólio</label>
+                        <label for="portfolio" class="m-2 textoAzul3">Portfólio: os serviços que você mais faz</label>
                         <input type="text" id="portfolio" class="w-auto form-control w-sm-auto" placeholder="Insira uma foto do seu trabalho" name="portfolio" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="regioesatendidas" class="m-2 textoAzul3">Regiões Atendidas</label>
                         <input type="text" id="regioesatendidas" class="w-auto form-control w-sm-auto" placeholder="" name="regioesatendidas" required>
-                    </div>
-
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-                        <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($usuarios->isEmpty())
-                            <option value="" disabled>Nenhum usuário cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->name}}</option>
-                            @endforeach
-                            @endif
-                        </select>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -143,6 +142,14 @@
                             @endforeach
                             @endif
                         </select>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
+                        <select id="usuario_id" class="w-auto form-control w-sm-auto" disabled>
+                            <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>
+                        </select>
+                        <input type="hidden" name="usuario_id" value="{{ auth()->user()->id }}">
                     </div>
                 </div>
 

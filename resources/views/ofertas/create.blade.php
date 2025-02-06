@@ -46,7 +46,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
             <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2Zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672Z" />
             <path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5Z" />
-        </svg> 
+        </svg>
     </div>
 
     <h1>Cadastrar Oferta</h1><br>
@@ -68,28 +68,51 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="urgencia" class="m-2 textoAzul3">Urgência</label>
-                        <input type="text" id="urgencia" class="w-auto form-control w-sm-auto" placeholder=" " name="urgencia" required>
+                        <label for="urgencia" class="m-2 textoAzul3">Urgência em realizar o serviço</label>
+                        <select id="urgencia" class="w-auto form-control w-sm-auto" placeholder=" " name="urgencia" required>
+                            <option value="" disabled selected>Selecione a Urgência</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Média">Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="valorestimado" class="m-2 textoAzul3">Valor Estimado</label>
-                        <input type="number" id="valorestimado" class="w-auto form-control w-sm-auto" placeholder="" name="valorestimado" required>
+                        <label for="valorestimado" class="m-2 textoAzul3">Valor Estimado Apto a pagar pelo serviço</label>
+                        <input type="text" id="valorestimado" class="w-auto form-control w-sm-auto" placeholder="" name="valorestimado" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="datapublicacao" class="m-2 textoAzul3">Data da Publicação</label>
-                        <input type="date" id="datapublicacao" class="w-auto form-control w-sm-auto" placeholder="" name="datapublicacao" required>
+                        <input type="datetime-local" id="datapublicacao" class="w-auto form-control w-sm-auto" placeholder="" name="datapublicacao" required readonly>
                     </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            let agora = new Date();
+                            let ano = agora.getFullYear();
+                            let mes = String(agora.getMonth() + 1).padStart(2, '0');
+                            let dia = String(agora.getDate()).padStart(2, '0');
+                            let horas = String(agora.getHours()).padStart(2, '0');
+                            let minutos = String(agora.getMinutes()).padStart(2, '0');
+
+                            let dataHoraFormatada = `${ano}-${mes}-${dia}T${horas}:${minutos}`;
+                            document.getElementById("datapublicacao").value = dataHoraFormatada;
+                        });
+                    </script>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="datalimite" class="m-2 textoAzul3">Data Limite</label>
+                        <label for="datalimite" class="m-2 textoAzul3">Data Limite para aguardar resposta</label>
                         <input type="date" id="datalimite" class="w-auto form-control w-sm-auto" placeholder="" name="datalimite" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="status" class="m-2 textoAzul3">Status</label>
-                        <input type="text" id="status" class="w-auto form-control w-sm-auto" placeholder="" name="status" required>
+                        <select id="status" class="w-auto form-control w-sm-auto" placeholder="" name="status" disabled>
+                            <option value="Aberta" selected>Aberta</option>
+                            <option value="Em andamento">Em andamento</option>
+                            <option value="Concluída">Concluída</option>
+                        </select>
+                        <input type="hidden" name="status" value="aberta">
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -103,32 +126,18 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="anexo" class="m-2 textoAzul3">Anexo</label>
-                        <input type="text" id="anexo" class="w-auto form-control w-sm-auto" placeholder="" name="anexo" required>
-                    </div>
-
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="frequencia" class="m-2 textoAzul3">Frequência</label>
-                        <input type="text" id="frequencia" class="w-auto form-control w-sm-auto" placeholder="" name="frequencia" required>
+                        <select id="frequencia" class="w-auto form-control w-sm-auto" placeholder="" name="frequencia" required>
+                            <option value="" disabled selected>Selecione a Frequência</option>
+                            <option value="Única">Única</option>
+                            <option value="Semanal">Semanal</option>
+                            <option value="Mensal">Mensal</option>
+                        </select>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="disponibilidadecliente" class="m-2 textoAzul3">Dias e horários de preferência</label>
                         <input type="text" id="disponibilidadecliente" class="w-auto form-control w-sm-auto" placeholder="" name="disponibilidadecliente" required>
-                    </div>
-
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-                        <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($usuarios->isEmpty())
-                            <option value="" disabled>Nenhum usuário cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->name}}</option>
-                            @endforeach
-                            @endif
-                        </select>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -143,6 +152,14 @@
                             @endforeach
                             @endif
                         </select>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
+                        <select id="usuario_id" class="w-auto form-control w-sm-auto" disabled>
+                            <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>
+                        </select>
+                        <input type="hidden" name="usuario_id" value="{{ auth()->user()->id }}">
                     </div>
                 </div>
 

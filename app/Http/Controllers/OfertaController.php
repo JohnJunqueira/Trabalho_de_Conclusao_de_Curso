@@ -42,6 +42,7 @@ class OfertaController extends Controller
         $oferta->usuario_id = $request->usuario_id;
         $oferta->categoria_id = $request->categoria_id;
         $oferta->save();
+
         return redirect()->route('ofertas.index');
     }
 

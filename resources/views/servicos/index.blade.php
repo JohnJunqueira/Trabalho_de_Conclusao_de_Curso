@@ -45,7 +45,7 @@
     <a href="" id="categorias" class="ms-5 text-start badge text-wrap sinalizador">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
-        </svg> 
+        </svg>
     </a>
 
 
@@ -73,8 +73,8 @@
                         <th>Data do Cadastro</th>
                         <th>Portfólio</th>
                         <th>Regiões Atendidas</th>
-                        <th>Usuário</th>
                         <th>Categoria</th>
+                        <th>Usuário</th>
                     </tr>
                 </thead>
 
@@ -90,11 +90,11 @@
                         <td>{{$servico->formadepagamento}}</td>
                         <td>{{$servico->agendadisponivel}}</td>
                         <td>{{$servico->contatodisponivel}}</td>
-                        <td>{{ \Carbon\Carbon::parse($servico->datacadastro)->format('d/m/Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($servico->datacadastro)->format('d/m/Y H:i') }}</td>
                         <td>{{$servico->portfolio}}</td>
                         <td>{{$servico->regioesatendidas}}</td>
-                        <td>{{$servico->acessarUsuario->name}}</td>
                         <td>{{$servico->acessarCategoria->nomecategoria}}</td>
+                        <td>{{$servico->acessarUsuario->name}}</td>
 
                         <td>
                             <div class="col" id="meio">
