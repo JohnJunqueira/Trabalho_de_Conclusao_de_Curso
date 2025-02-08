@@ -36,10 +36,9 @@ class ServicoController extends Controller
         $servico->agendadisponivel =$request->agendadisponivel;
         $servico->contatodisponivel = $request->contatodisponivel;
         $servico->datacadastro = $request->datacadastro;
-        $servico->portfolio = $request->portfolio;
         $servico->regioesatendidas = $request->regioesatendidas;
-        $servico->usuario_id = $request->usuario_id;
         $servico->categoria_id = $request->categoria_id;
+        $servico->usuario_id = $request->usuario_id;
         $servico->save();
         return redirect()->route('servicos.index');
     }

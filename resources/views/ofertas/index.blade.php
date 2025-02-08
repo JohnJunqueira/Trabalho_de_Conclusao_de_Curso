@@ -90,7 +90,7 @@
                         <td>{{$oferta->localizacao}}</td>
                         <td>{{$oferta->contatodisponivel}}</td>
                         <td>{{$oferta->frequencia}}</td>
-                        <td>{{ $oferta->disponibilidadecliente}}</td>
+                        <td>{{$oferta->disponibilidadecliente}}</td>
                         <td>{{$oferta->acessarCategoria->nomecategoria}}</td>
                         <td>{{$oferta->acessarUsuario->name}}</td>
 
@@ -121,7 +121,8 @@
         </div>
 
 
-        <div class="col-lg-12 me-3" style="text-align:right">
+        <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
+            <a href="{{ route ('dashboard') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
             <form action="{{route('ofertas.create')}}" method="get">
                 @csrf
                 <input type="submit" class="btn btn-success" value="Nova">

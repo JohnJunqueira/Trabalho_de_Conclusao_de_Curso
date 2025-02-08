@@ -119,14 +119,10 @@
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-                        <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            <option value="" disabled>Selecione o Usuário</option>
-                            @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}" {{ $Servico->usuario_id == $usuario->id ? 'selected' : '' }}>
-                                {{ $usuario->name}}
-                            </option>
-                            @endforeach
+                        <select id="usuario_id" class="w-auto form-control w-sm-auto" disabled>
+                            <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>
                         </select>
+                        <input type="hidden" name="usuario_id" value="{{ auth()->user()->id }}">
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -144,8 +140,9 @@
             </div>
 
                 <div class="col-lg-12" style="text-align:right">
+                    <a href="{{ route ('servicos.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
                     <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
-                        Editar
+                        Salvar
                     </button>
                 </div>
             </form>

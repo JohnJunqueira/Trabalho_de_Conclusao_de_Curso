@@ -45,7 +45,7 @@
     <a href="" id="categorias" class="ms-5 text-start badge text-wrap sinalizador">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
-        </svg> 
+        </svg>
     </a>
 
     <h1>Divisões</h1><br>
@@ -98,7 +98,8 @@
         </div>
 
 
-        <div class="col-lg-12 me-3" style="text-align:right">
+        <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
+            <a href="{{ route ('admin.dashboard') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
             <form action="{{route('divisoes.create')}}" method="get">
                 @csrf
                 <input type="submit" class="btn btn-success" value="Nova">

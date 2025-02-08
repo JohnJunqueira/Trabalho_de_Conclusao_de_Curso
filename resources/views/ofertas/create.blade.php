@@ -58,7 +58,7 @@
 
                 <div class="row m-2">
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="titulodaoferta" class="m-2 textoAzul3">Oferta</label>
+                        <label for="titulodaoferta" class="m-2 textoAzul3">Oferta de Serviço</label>
                         <input type="text" id="titulodaoferta" class="w-auto form-control w-sm-auto" placeholder="" name="titulodaoferta" required>
                     </div>
 
@@ -166,6 +166,7 @@
 
 
                 <div class="col-lg-12" style="text-align:right">
+                    <a href="{{ route ('ofertas.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
                     <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
                         Cadastrar
                     </button>

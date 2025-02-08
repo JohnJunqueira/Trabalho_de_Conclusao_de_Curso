@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nomecategoria', 80);
-            $table->softDeletes();
+            //$table->softDeletes();
         });
     }
 

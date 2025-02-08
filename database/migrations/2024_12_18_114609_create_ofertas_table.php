@@ -23,14 +23,14 @@ return new class extends Migration
             $table->enum('status', ['Aberta', 'Em Andamento', 'Concluída'])->default('Aberta');
             $table->string('localizacao', 80);
             $table->string('contatodisponivel', 80);
-            $table->json('anexo')->nullable();
+            //$table->json('anexo')->nullable();
             $table->enum('frequencia', ['Única', 'Semanal', 'Mensal'])->default('Única');
             $table->string('disponibilidadecliente', 60);
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->softDeletes();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            //$table->softDeletes();
         });
     }
 

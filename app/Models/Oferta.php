@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Oferta extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory; //SoftDeletes;
 
     protected $table = "ofertas";
 
-    protected $fillable = ['titulodaoferta', 'descricaodaoferta', 'urgencia', 'valorestimado', 'datapublicacao', 'datalimite', 'status', 'localizacao', 'contatodisponivel', 'anexo', 'frequencia', 'disponibilidadecliente', 'usuario_id', 'categoria_id'];
+    protected $fillable = ['titulodaoferta', 'descricaodaoferta', 'urgencia', 'valorestimado', 'datapublicacao', 'datalimite', 'status', 'localizacao', 'contatodisponivel', 'frequencia', 'disponibilidadecliente', 'usuario_id', 'categoria_id'];
 
-    
+
     public function acessarUsuario(){
         return $this->belongsTo(User::class, 'usuario_id');
     }

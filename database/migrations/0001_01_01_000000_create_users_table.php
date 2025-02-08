@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
+            //$table->softDeletes();
             //$table->enum('status', ['active', 'inative'])->default('active');
             //$table->enum('role', ['admin', 'prestador', 'usercliente'])->default('usercliente');
             //$table->enum('genero', ['Masculino', 'Feminino', 'Prefiro não dizer']);

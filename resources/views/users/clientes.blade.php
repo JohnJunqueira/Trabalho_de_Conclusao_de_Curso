@@ -10,7 +10,7 @@
     <ul>
         @foreach($clientes as $cliente)
             <li>
-                {{ $cliente->name }} - {{ $cliente->email }}
+                {{ $cliente->name }} - {{ $cliente->email }} - {{ $cliente->apelidoprofissional }}- {{ $cliente->genero }}- {{ $cliente->datadenascimento }}- {{ $cliente->celular }}
 
                 <!-- Botão Editar -->
                 <a href="{{ route('users.edit', $cliente->id) }}" class="btn btn-warning">Editar</a>

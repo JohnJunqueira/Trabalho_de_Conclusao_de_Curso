@@ -58,12 +58,12 @@
 
                 <div class="row m-2">
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="titulodaespecialidade" class="m-2 textoAzul3">Especialidade</label>
+                        <label for="titulodaespecialidade" class="m-2 textoAzul3">Serviço Oferecido</label>
                         <input type="text" id="titulodaespecialidade" class="w-auto form-control w-sm-auto" placeholder="" name="titulodaespecialidade" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="descricaodaatividade" class="m-2 textoAzul3">Descrição da Atividade</label>
+                        <label for="descricaodaatividade" class="m-2 textoAzul3">Descrição do Serviço</label>
                         <input type="text" id="descricaodaatividade" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodaatividade" required>
                     </div>
 
@@ -74,7 +74,7 @@
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="servicosfrequentes" class="m-2 textoAzul3">Serviços Frequentes</label>
-                        <input type="text" id="servicosfrequentes" class="w-auto form-control w-sm-auto" placeholder="" name="servicosfrequentes" required>
+                        <input type="text" id="servicosfrequentes" class="w-auto form-control w-sm-auto" placeholder="os serviços que você mais faz" name="servicosfrequentes" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -119,11 +119,6 @@
                             document.getElementById("datacadastro").value = dataHoraFormatada;
                         });
                     </script>
-
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="portfolio" class="m-2 textoAzul3">Portfólio: os serviços que você mais faz</label>
-                        <input type="text" id="portfolio" class="w-auto form-control w-sm-auto" placeholder="Insira uma foto do seu trabalho" name="portfolio" required>
-                    </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="regioesatendidas" class="m-2 textoAzul3">Regiões Atendidas</label>

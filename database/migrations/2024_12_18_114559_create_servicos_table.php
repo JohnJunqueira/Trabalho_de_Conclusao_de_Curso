@@ -24,13 +24,13 @@ return new class extends Migration
             $table->string('agendadisponivel', 120);
             $table->string('contatodisponivel', 80);
             $table->dateTime('datacadastro');
-            $table->string('portfolio')->nullable();
+            //$table->string('portfolio')->nullable();
             $table->string('regioesatendidas', 120);
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->softDeletes();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            //$table->softDeletes();
         });
     }
 

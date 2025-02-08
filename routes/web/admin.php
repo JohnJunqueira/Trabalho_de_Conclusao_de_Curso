@@ -41,14 +41,14 @@ Route::prefix('divisoes')->group(function () {
 
 //Users
 Route::prefix('users')->group(function () {
-    Route::get('/prestadores', [UserController::class, 'listarPrestadores'])->name('users.prestadores');
-    Route::get('/clientes', [UserController::class, 'listarClientes'])->name('users.clientes');
+    Route::get('/prestadores', [UserController::class, 'listarPrestadores'])->middleware(['auth','admin'])->name('users.prestadores');
+    Route::get('/clientes', [UserController::class, 'listarClientes'])->middleware(['auth','admin'])->name('users.clientes');
     // Rota para editar dados de ambos usuários
-    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->middleware(['auth','admin'])->name('users.edit');
     // Rota para atualizar os dados (PATCH ou PUT)
-    Route::put('/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::put('/{id}', [UserController::class, 'update'])->middleware(['auth','admin'])->name('users.update');
     // Rota para excluir usuário
-    Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/{id}', [UserController::class, 'destroy'])->middleware(['auth','admin'])->name('users.destroy');
 
 });
 

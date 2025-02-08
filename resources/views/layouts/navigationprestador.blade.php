@@ -13,22 +13,22 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('prestador.dashboard')" :active="request()->routeIs('prestador.dashboard')">
-                        {{ __('Início') }}
+                        {{ __('📍 Início') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('prestador.dashboard')" :active="request()->routeIs('prestador.dashboard')">
-                        {{ __('Como Funciona?') }}
+                        {{ __('❓ Como Funciona?') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('prestador.dashboard')">
-                        {{ __('Categoria') }}
+                        {{ __('🔎 Procurar Clientes') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('servicos.index')" :active="request()->routeIs('prestador.dashboard')">
-                        {{ __('Meus Serviços') }}
+                        {{ __('📌 Meus Serviços') }}
                     </x-nav-link>
                 </div>
             </div>

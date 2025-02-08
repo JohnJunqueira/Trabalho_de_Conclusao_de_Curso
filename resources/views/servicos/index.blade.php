@@ -71,7 +71,6 @@
                         <th>Agenda Disponível</th>
                         <th>Contato Disponível</th>
                         <th>Data do Cadastro</th>
-                        <th>Portfólio</th>
                         <th>Regiões Atendidas</th>
                         <th>Categoria</th>
                         <th>Usuário</th>
@@ -91,16 +90,15 @@
                         <td>{{$servico->agendadisponivel}}</td>
                         <td>{{$servico->contatodisponivel}}</td>
                         <td>{{ \Carbon\Carbon::parse($servico->datacadastro)->format('d/m/Y H:i') }}</td>
-                        <td>{{$servico->portfolio}}</td>
                         <td>{{$servico->regioesatendidas}}</td>
                         <td>{{$servico->acessarCategoria->nomecategoria}}</td>
-                        <td>{{$servico->acessarUsuario->name}}</td>
+                        <td>{{ optional($servico->acessarUsuario)->name ?? 'Usuário não definido' }}</td>
 
                         <td>
                             <div class="col" id="meio">
                                 <form action="{{route('servicos.edit', ['id' => $servico->id])}}" method="get">
                                     @csrf
-                                    <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
+                                    <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
                                 </form>
                             </div>
                         </td>
@@ -110,7 +108,7 @@
                                 <form id="formExcluir" action="{{ route('servicos.delete', ['id' => $servico->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" class="btn btn-primary" value="Deletar" onclick="return confirmarExclusao();"><br><br>
+                                    <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
                                 </form>
                             </div>
                         </td>
@@ -123,10 +121,11 @@
         </div>
 
 
-        <div class="col-lg-12 me-3" style="text-align:right">
+        <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
+            <a href="{{ route ('prestador.dashboard') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
             <form action="{{route('servicos.create')}}" method="get">
                 @csrf
-                <input type="submit" class="btn btn-success" value="Nova">
+                <input type="submit" class="btn btn-success" value="+Novo Serviço">
             </form>
         </div>
 

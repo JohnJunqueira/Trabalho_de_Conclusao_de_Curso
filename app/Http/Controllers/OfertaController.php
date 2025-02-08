@@ -36,7 +36,6 @@ class OfertaController extends Controller
         $oferta->status = $request->status;
         $oferta->localizacao =$request->localizacao;
         $oferta->contatodisponivel = $request->contatodisponivel;
-        $oferta->anexo = $request->anexo;
         $oferta->frequencia = $request->frequencia;
         $oferta->disponibilidadecliente = $request->disponibilidadecliente;
         $oferta->usuario_id = $request->usuario_id;
