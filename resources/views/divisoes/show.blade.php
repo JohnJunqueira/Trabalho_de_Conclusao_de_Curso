@@ -100,8 +100,9 @@
             @endif
         </div>
 
-
-        
+        <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
+            <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
+        </div>
     </div>
 </div>
 

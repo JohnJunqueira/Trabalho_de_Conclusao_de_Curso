@@ -62,7 +62,7 @@
                 <thead>
                     <tr>
                         <th>Divisões</th>
-
+                        <th>Categorias</th>
                     </tr>
                 </thead>
 
@@ -70,7 +70,7 @@
                     <tbody class="conteudo-itens">
                         <tr>
                             <td>{{$divisao->nomedivisoes}}</td>
-                            
+                            <td>{{$divisao->acessarcategoria->nomecategoria}}</td>
 
                             <td>
                                 <div class="col" id="meio">
@@ -98,9 +98,9 @@
                 <p class="text-center">Nenhuma divisão cadastrada para esta categoria.</p>
             @endif
         </div>
-
-
-
+        <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
+            <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
+        </div>
     </div>
 </div>
 
