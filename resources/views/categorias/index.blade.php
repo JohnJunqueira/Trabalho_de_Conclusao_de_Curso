@@ -62,6 +62,9 @@
                 <thead>
                     <tr>
                         <th>Categorias</th>
+                        @if (Auth::user()->role === 'admin')
+                            <th>Ações</th>
+                        @endif
                     </tr>
                 </thead>
 
@@ -70,29 +73,59 @@
                     <tr>
                         <td>{{$categoria->nomecategoria}}</td>
 
+                        @php
+                            $role = Auth::user()->role ?? 'cliente'; // Garante que sempre tenha um valor
+                        @endphp
 
-                        <td>
-                            <div class="col" id="meio">
-                                <form action="{{route('categorias.edit', ['id' => $categoria->id])}}" method="get">
-                                    @csrf
-                                    <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
-                                </form>
-                            </div>
-                        </td>
+                        @if (Auth::user()->role === 'admin')
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <!-- Botão para Ver Divisões -->
+                                    <a href="{{ route('divisoes.show', ['categoria_id' => $categoria->id]) }}" class="btn btn-info me-2">
+                                        Ver Divisões
+                                    </a>
 
-                        <td>
-                            <div class="col" id="meio">
-                                <form id="formExcluir" action="{{ route('categorias.delete', ['id' => $categoria->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
-                                </form>
-                            </div>
-                        </td>
+                                    <!-- Botão para Adicionar Divisão -->
+                                    <a href="{{ route('divisoes.create', ['categoria_id' => $categoria->id]) }}" class="btn btn-success me-2">
+                                        + Divisão
+                                    </a>
+                                </div>
+                            </td>
+                        @endif
 
+
+                        @if($role === 'cliente')
+                            <td>
+                                <a href="{{ route('ofertas.create', ['categoria_id' => $categoria->id]) }}" class="btn btn-primary">
+                                Criar Oferta
+                                </a>
+                            </td>
+                        @endif
+
+
+
+                        @if($role === 'admin')
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <form action="{{route('categorias.edit', ['id' => $categoria->id])}}" method="get">
+                                        @csrf
+                                        <input type="submit" class="btn btn-info me-2" name="formulario" value="Editar">
+                                    </form>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <form id="formExcluir" action="{{ route('categorias.delete', ['id' => $categoria->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-success me-2" value="Excluir" onclick="return confirmarExclusao();">
+                                    </form>
+                                </div>
+                            </td>
+                        @endif
                     </tr>
                 </tbody>
-
                 @endforeach
             </table>
         </div>
@@ -112,12 +145,14 @@
                 }
             @endphp
 
-            <a href="{{ $route }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
+            <a href="{{ $route }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Cancelar</a>
 
-            <form action="{{route('categorias.create')}}" method="get">
-                @csrf
-                <input type="submit" class="btn btn-success" value="Nova">
-            </form>
+            @if($role === 'admin')
+                <form action="{{route('categorias.create')}}" method="get">
+
+                    <input type="submit" class="btn btn-success" value="+ Nova Categoria">
+                </form>
+            @endif
         </div>
 
 

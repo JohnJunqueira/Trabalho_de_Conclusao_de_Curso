@@ -62,19 +62,18 @@
                         <input type="text" id="nomedivisoes" class="w-auto form-control w-sm-auto" placeholder="" name="nomedivisoes" required>
                     </div>
 
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="categoria_id" class="m-2 textoAzul3">Categoria</label>
-                        <select name="categoria_id" id="categoria_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($categorias->isEmpty())
-                            <option value="" disabled>Nenhuma categoria cadastrada</option>
+                        <select id="categoria_id" class="w-auto form-control w-sm-auto" disabled>
+                            @if(isset($categoria))
+                                <option value="{{ $categoria->id }}" selected>{{ $categoria->nomecategoria }}</option>
                             @else
-                            <option value="" disabled selected>Selecione a Categoria</option>
-                            @foreach($categorias as $categoria)
-                            <option value="{{ $categoria->id }}">{{ $categoria->nomecategoria }}</option>
-                            @endforeach
+                                <option value="" selected>Nenhuma categoria selecionada</option>
                             @endif
                         </select>
-                    </div>
+                        <input type="hidden" name="categoria_id" value="{{ $categoria->id ?? '' }}">
+                </div>
+
                 </div>
 
                 <div class="col-lg-12" style="text-align:right">

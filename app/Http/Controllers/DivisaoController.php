@@ -12,13 +12,32 @@ class DivisaoController extends Controller
     public function index()
     {
         $divisoes = Divisao::all();
-        return view('divisoes.index', ['divisoes'=>$divisoes]);
+        //return view('divisoes.index', ['divisoes'=>$divisoes]);
+
+        // Retornar a view com as divisões dessa categoria
+        return view('divisoes.index', compact('divisoes'));
     }
 
-    public function create()
+    public function show($categoria_id){
+        // Buscar a categoria pelo ID
+        $categoria = Categoria::findOrFail($categoria_id);
+
+        $divisoes = $categoria->divisoes ?? []; // Supondo que a relação esteja definida no model e se a relação não for carregada corretamente, garantir que $divisoes seja um array vazio
+
+        return view('divisoes.show', compact('divisoes'));
+    }
+
+    public function create(Request $request)
     {
-        $categorias = Categoria::all();
-        return view('divisoes.create', ['categorias' => $categorias]);
+        $categoria = Categoria::findOrFail($request->categoria_id); // Obtém a categoria pelo ID passado na URL
+        $divisoes = Divisao::all();
+        return view('divisoes.create', ['categoria' => $categoria, 'divisoes' => $divisoes]);
+
+        // Verifica se a categoria existe
+        if (!$categoria) {
+            return redirect()->route('categorias.create')->with('error', 'Você precisa criar uma categoria primeiro.');
+        }
+        return view('divisoes.create', compact('categoria'));
     }
 
     //Método post enviando dados pela requisição-> Request $request;

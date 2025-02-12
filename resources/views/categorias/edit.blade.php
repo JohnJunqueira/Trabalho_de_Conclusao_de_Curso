@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="col-lg-12" style="text-align:right">
-                    <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
+                    <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Cancelar</a>
                     <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
                         Editar
                     </button>

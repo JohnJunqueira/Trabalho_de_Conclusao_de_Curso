@@ -21,10 +21,25 @@ class CategoriaController extends Controller
 
     //Método post enviando dados pela requisição-> Request $request;
     public function store(Request $request){
-        $categoria = new Categoria();//criou uma estância-> a classe $categoria estanciada
-        $categoria->nomecategoria = $request->nomecategoria;//A classe categoria, o atributo nomecategoria recebe o que está vindo da requisição;
-        $categoria->save();
-        return redirect()->route('categorias.index');
+
+        $categoria = new Categoria();
+        $categoria->nomecategoria = $request->nomecategoria;
+        //$categoria->save();
+
+        // Criar a categoria no banco de dados
+        $categoria = Categoria::create([
+        'nomecategoria' => $request->nomecategoria
+        ]);
+
+        // Verifica se o usuário clicou em "Adicionar Divisão"
+        if ($request->action == 'divisao') {
+            // dd($categoria->id); // Para realizar teste de funcionamento
+            // Redirecionar para a página de criar divisão da nova categoria
+            return redirect()->route('divisoes.create', ['categoria_id' => $categoria->id]);
+        }
+
+        // Caso contrário, apenas redireciona para a lista de categorias, ou seja, se a ação for apenas cadastrar a categoria, redirecionar para a lista de categorias
+        return redirect()->route('categorias.index')->with('success', 'Categoria cadastrada com sucesso!');
     }
 
     public function edit($id)

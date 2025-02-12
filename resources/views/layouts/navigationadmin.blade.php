@@ -13,27 +13,27 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Início') }}
+                        {{ __('📍 Início') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Como Funciona?') }}
+                        {{ __('❓ Sobre a O&C Serviços') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Categorias') }}
+                        {{ __('🔎 Categorias') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('users.clientes')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Ver Clientes') }}
+                        {{ __('📌 Ver Clientes') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('users.prestadores')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Ver Prestadores') }}
+                        {{ __('📌 Ver Prestadores') }}
                     </x-nav-link>
                 </div>
             </div>

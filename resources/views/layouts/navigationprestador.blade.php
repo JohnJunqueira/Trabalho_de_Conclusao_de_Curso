@@ -18,7 +18,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('prestador.dashboard')" :active="request()->routeIs('prestador.dashboard')">
-                        {{ __('❓ Como Funciona?') }}
+                        {{ __('❓ Sobre a O&C Serviços') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

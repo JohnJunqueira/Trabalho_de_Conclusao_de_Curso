@@ -17,12 +17,13 @@ class OfertaController extends Controller
         return view('ofertas.index', ['ofertas'=>$ofertas]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $categorias = Categoria::all();
+        $categoria = Categoria::findOrFail($request->categoria_id); // Obtém a categoria pelo ID passado na URL
         $usuarios = User::all();
-        return view('ofertas.create', ['categorias' => $categorias, 'usuarios' => $usuarios]);
+        return view('ofertas.create', ['categoria' => $categoria, 'usuarios' => $usuarios]);
     }
+
 
     //Método post enviando dados pela requisição-> Request $request;
     public function store(Request $request){

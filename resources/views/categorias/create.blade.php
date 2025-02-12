@@ -63,15 +63,49 @@
                     </div>
                 </div>
 
+                    <!-- Campo Oculto para saber qual botão foi clicado -->
+                    <input type="hidden" name="action" id="action" value="">
+
                 <div class="col-lg-12" style="text-align:right">
-                    <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
+                    <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Cancelar</a>
+
+                    <button type="submit" class="btn btn-primary me-5 mb-5" onclick="document.getElementById('action').value='divisao'">
+                        Adicionar Divisão
+                    </button>
+
+                    <!-- Botão para Cadastrar Categoria -->
                     <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
                         Cadastrar
                     </button>
                 </div>
+
+                <script>
+                    document.getElementById('adicionarDivisao').addEventListener('click', function() {
+                        let nomeCategoria = document.getElementById('nomecategoria').value;
+
+                        if (nomeCategoria.trim() === '') {
+                            alert('Digite um nome para a categoria antes de adicionar uma divisão.');
+                            return;
+                        }
+
+                        // Redireciona para a rota de criar divisão, passando o nome da categoria via query string
+                        window.location.href = "{{ route('divisoes.create') }}?nomecategoria=" + encodeURIComponent(nomeCategoria);
+                    });
+                </script>
+
+<script>
+    function submitForm(actionType) {
+        document.getElementById('action').value = actionType;
+        document.getElementById('categoriaForm').submit();
+    }
+</script>
+
             </form>
+
+
         </div>
     </div>
 </div>
 
 @endsection('content')
+

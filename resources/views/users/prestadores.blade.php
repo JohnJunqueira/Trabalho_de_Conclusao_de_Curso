@@ -28,6 +28,10 @@
                     <td>{{ $prestador->datadenascimento }}</td>
                     <td>{{ $prestador->celular }}</td>
                     <td>
+
+                        <!-- Botão Ver Serviços -->
+                        <a href="{{ route('servicos.index', $prestador->id) }}" class="btn btn-warning">Ver Serviços</a>
+
                         <!-- Botão Editar -->
                         <a href="{{ route('users.edit', $prestador->id) }}" class="btn btn-warning">Editar</a>
 

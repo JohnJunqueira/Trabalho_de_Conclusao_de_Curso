@@ -13,4 +13,11 @@ class Categoria extends Model
     protected $table = "categorias";
 
     protected $fillable = ['nomecategoria'];
+
+
+    public function divisoes()
+    {
+        return $this->hasMany(Divisao::class, 'categoria_id'); // Certifique-se que o campo 'categoria_id' existe na tabela divisões
+    }
+
 }

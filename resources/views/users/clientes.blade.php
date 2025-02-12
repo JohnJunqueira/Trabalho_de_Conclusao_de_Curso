@@ -12,6 +12,9 @@
             <li>
                 {{ $cliente->name }} - {{ $cliente->email }} - {{ $cliente->apelidoprofissional }}- {{ $cliente->genero }}- {{ $cliente->datadenascimento }}- {{ $cliente->celular }}
 
+                <!-- Botão Ver Ofertas -->
+                <a href="{{ route('ofertas.index', $cliente->id) }}" class="btn btn-warning">Ver Ofertas</a>
+
                 <!-- Botão Editar -->
                 <a href="{{ route('users.edit', $cliente->id) }}" class="btn btn-warning">Editar</a>
 

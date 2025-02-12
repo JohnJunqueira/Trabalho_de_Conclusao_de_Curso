@@ -15,12 +15,8 @@ Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
 
 //Categorias
 Route::prefix('categorias')->group(function () {
-
-    //  Qualquer usuário autenticado pode visualizar categorias
     Route::get('/index', [CategoriaController::class, 'index'])->middleware(['auth'])->name('categorias.index');
     Route::get('/show/{id}',[CategoriaController::class,'show'])->middleware(['auth'])->name('categorias.show');
-
-    // Apenas admin pode criar, editar e excluir categorias
     Route::get('/create', [CategoriaController::class, 'create'])->middleware(['auth','admin'])->name('categorias.create');
     Route::post('/store', [CategoriaController::class, 'store'])->middleware(['auth','admin'])->name('categorias.store');
     Route::get('/edit/{id}', [CategoriaController::class, 'edit'])->middleware(['auth','admin'])->name('categorias.edit');
@@ -28,10 +24,10 @@ Route::prefix('categorias')->group(function () {
     Route::delete('/delete/{id}', [CategoriaController::class, 'destroy'])->middleware(['auth','admin'])->name('categorias.delete');
 });
 
-//Divisoes
+//Divisoes 
 Route::prefix('divisoes')->group(function () {
     Route::get('/index', [DivisaoController::class, 'index'])->middleware(['auth'])->name('divisoes.index');
-    Route::get('/show/{id}',[DivisaoController::class,'show'])->middleware(['auth'])->name('divisoes.show');
+    Route::get('/show/{categoria_id}',[DivisaoController::class,'show'])->middleware(['auth', 'admin'])->name('divisoes.show');
     Route::get('/create', [DivisaoController::class, 'create'])->middleware(['auth','admin'])->name('divisoes.create');
     Route::post('/store', [DivisaoController::class, 'store'])->middleware(['auth','admin'])->name('divisoes.store');
     Route::get('/edit/{id}', [DivisaoController::class, 'edit'])->middleware(['auth','admin'])->name('divisoes.edit');
