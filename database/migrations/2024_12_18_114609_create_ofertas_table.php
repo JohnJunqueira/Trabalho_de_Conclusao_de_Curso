@@ -17,15 +17,16 @@ return new class extends Migration
             $table->string('titulodaoferta', 60);
             $table->string('descricaodaoferta', 400);
             $table->enum('urgencia', ['Alta', 'Média', 'Baixa'])->default('Alta');
-            $table->decimal('valorestimado', 8,2);
+            $table->string('valorestimado', 80);
             $table->dateTime('datapublicacao');
             $table->dateTime('datalimite');
             $table->enum('status', ['Aberta', 'Em Andamento', 'Concluída'])->default('Aberta');
             $table->string('localizacao', 80);
             $table->string('contatodisponivel', 80);
+            $table->string('outroscontatos', 100);
             //$table->json('anexo')->nullable();
             $table->enum('frequencia', ['Única', 'Semanal', 'Mensal'])->default('Única');
-            $table->string('disponibilidadecliente', 60);
+            $table->string('preferenciacliente', 60);
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');

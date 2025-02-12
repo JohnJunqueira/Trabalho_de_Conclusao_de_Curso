@@ -98,8 +98,13 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="contatodisponivel" class="m-2 textoAzul3">Contato Disponível</label>
+                        <label for="contatodisponivel" class="m-2 textoAzul3">Contato Principal</label>
                         <input value="{{$Servico->contatodisponivel}}" type="text" id="contatodisponivel" class="w-auto form-control w-sm-auto" name="contatodisponivel" required>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="outroscontatos" class="m-2 textoAzul3">Outras Formas de Contato</label>
+                        <input value="{{$Servico->outroscontatos}}" type="text" id="outroscontatos" class="w-auto form-control w-sm-auto" name="outroscontatos" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">

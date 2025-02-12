@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('formadepagamento', 60);
             $table->string('agendadisponivel', 120);
             $table->string('contatodisponivel', 80);
+            $table->string('outroscontatos', 100);
             $table->dateTime('datacadastro');
             //$table->string('portfolio')->nullable();
             $table->string('regioesatendidas', 120);

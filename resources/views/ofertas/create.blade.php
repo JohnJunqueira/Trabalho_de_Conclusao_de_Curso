@@ -116,13 +116,20 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="localizacao" class="m-2 textoAzul3">Localização</label>
+                        <label for="localizacao" class="m-2 textoAzul3">Local do serviço (Endereço)</label>
+                        <small class="text-muted d-block ms-2">(ex.: rua, número, bairro, cidade e ponto de referência / zona rural: nome da fazenda, sítio ou estrada).</small>
                         <input type="text" id="localizacao" class="w-auto form-control w-sm-auto" placeholder="" name="localizacao" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="contatodisponivel" class="m-2 textoAzul3">Contato Disponível</label>
-                        <input type="text" id="contatodisponivel" class="w-auto form-control w-sm-auto" placeholder="Whatsapp, Instagram, Facebook..." name="contatodisponivel" required>
+                        <label for="contatodisponivel" class="m-2 textoAzul3">Contato Principal</label>
+                        <input type="text" id="contatodisponivel" class="w-auto form-control w-sm-auto" placeholder=" " name="contatodisponivel" value="{{ Auth::user()->celular ?? '' }}" required>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="outroscontatos" class="m-2 textoAzul3">Outras Formas de Contato</label>
+                        <small class="text-muted d-block ms-2">(Outro Whatsapp/celular, Instagram, Facebook etc).</small>
+                        <input type="text" id="outroscontatos" class="w-auto form-control w-sm-auto" placeholder=" " name="outroscontatos" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -136,8 +143,8 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="disponibilidadecliente" class="m-2 textoAzul3">Dias e horários de preferência</label>
-                        <input type="text" id="disponibilidadecliente" class="w-auto form-control w-sm-auto" placeholder="" name="disponibilidadecliente" required>
+                        <label for="preferenciacliente" class="m-2 textoAzul3">Dias e horários de preferência</label>
+                        <input type="text" id="preferenciacliente" class="w-auto form-control w-sm-auto" placeholder="" name="preferenciacliente" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">

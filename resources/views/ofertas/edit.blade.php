@@ -78,7 +78,7 @@
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="valorestimado" class="m-2 textoAzul3">Valor Estimado</label>
-                        <input value="{{$Oferta->valorestimado}}" type="number" id="valorestimado" class="w-auto form-control w-sm-auto" name="valorestimado" required>
+                        <input value="{{$Oferta->valorestimado}}" type="text" id="valorestimado" class="w-auto form-control w-sm-auto" name="valorestimado" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -101,13 +101,18 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="localizacao" class="m-2 textoAzul3">Localização</label>
+                        <label for="localizacao" class="m-2 textoAzul3">Local do serviço (Endereço)</label>
                         <input value="{{$Oferta->localizacao}}" type="text" id="localizacao" class="w-auto form-control w-sm-auto" name="localizacao" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="contatodisponivel" class="m-2 textoAzul3">Contato Disponível</label>
+                        <label for="contatodisponivel" class="m-2 textoAzul3">Contato Principal</label>
                         <input value="{{$Oferta->contatodisponivel}}" type="text" id="contatodisponivel" class="w-auto form-control w-sm-auto" name="contatodisponivel" required>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="outroscontatos" class="m-2 textoAzul3">Outras Formas de Contato</label>
+                        <input value="{{$Oferta->outroscontatos}}" type="text" id="outroscontatos" class="w-auto form-control w-sm-auto" name="outroscontatos" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -120,8 +125,8 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="disponibilidadecliente" class="m-2 textoAzul3">Dias e horários de preferência</label>
-                        <input value="{{$Oferta->disponibilidadecliente}}" type="text" id="disponibilidadecliente" class="w-auto form-control w-sm-auto" name="disponibilidadecliente" required>
+                        <label for="preferenciacliente" class="m-2 textoAzul3">Dias e horários de preferência</label>
+                        <input value="{{$Oferta->preferenciacliente}}" type="text" id="preferenciacliente" class="w-auto form-control w-sm-auto" name="preferenciacliente" required>
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">

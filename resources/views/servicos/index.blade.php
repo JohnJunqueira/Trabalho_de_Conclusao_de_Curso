@@ -69,7 +69,8 @@
                         <th>Forma de Trabalho</th>
                         <th>Forma de Pagamento</th>
                         <th>Agenda Disponível</th>
-                        <th>Contato Disponível</th>
+                        <th>Contato Principal</th>
+                        <th>Outras Formas de Contato</th>
                         <th>Data do Cadastro</th>
                         <th>Regiões Atendidas</th>
                         <th>Categoria</th>
@@ -89,6 +90,7 @@
                         <td>{{$servico->formadepagamento}}</td>
                         <td>{{$servico->agendadisponivel}}</td>
                         <td>{{$servico->contatodisponivel}}</td>
+                        <td>{{$oferta->outroscontatos}}</td>
                         <td>{{ \Carbon\Carbon::parse($servico->datacadastro)->format('d/m/Y H:i') }}</td>
                         <td>{{$servico->regioesatendidas}}</td>
                         <td>{{$servico->acessarCategoria->nomecategoria}}</td>

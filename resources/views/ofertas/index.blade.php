@@ -68,8 +68,9 @@
                         <th>Data Publicação</th>
                         <th>Data Limite</th>
                         <th>Status</th>
-                        <th>Localização</th>
-                        <th>Contato Disponível</th>
+                        <th>Local do serviço (Endereço)</th>
+                        <th>Contato Principal</th>
+                        <th>Outras Formas de Contato</th>
                         <th>Frequência</th>
                         <th>Dias e Horários de Preferência</th>
                         <th>Categoria</th>
@@ -89,8 +90,9 @@
                         <td>{{$oferta->status}}</td>
                         <td>{{$oferta->localizacao}}</td>
                         <td>{{$oferta->contatodisponivel}}</td>
+                        <td>{{$oferta->outroscontatos}}</td>
                         <td>{{$oferta->frequencia}}</td>
-                        <td>{{$oferta->disponibilidadecliente}}</td>
+                        <td>{{$oferta->preferenciacliente}}</td>
                         <td>{{$oferta->acessarCategoria->nomecategoria}}</td>
                         <td>{{$oferta->acessarUsuario->name}}</td>
 
