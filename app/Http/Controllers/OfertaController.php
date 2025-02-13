@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Oferta;
 use App\Models\Categoria;
 use App\Models\User;
+use App\Models\Divisao;
 use Illuminate\Database\QueryException;
 
 
@@ -20,8 +21,12 @@ class OfertaController extends Controller
     public function create(Request $request)
     {
         $categoria = Categoria::findOrFail($request->categoria_id); // Obtém a categoria pelo ID passado na URL
+        $divisao = Divisao::findOrFail($request->divisao_id); // Obtém a divisão com base no ID passado
+
+        // $categoria->divisoes->categoria_id;
+
         $usuarios = User::all();
-        return view('ofertas.create', ['categoria' => $categoria, 'usuarios' => $usuarios]);
+        return view('ofertas.create', ['categoria' => $categoria, 'divisao' => $divisao, 'usuarios' => $usuarios]);
     }
 
 
@@ -37,10 +42,12 @@ class OfertaController extends Controller
         $oferta->status = $request->status;
         $oferta->localizacao =$request->localizacao;
         $oferta->contatodisponivel = $request->contatodisponivel;
+        $oferta->outroscontatos = $request->outroscontatos;
         $oferta->frequencia = $request->frequencia;
-        $oferta->disponibilidadecliente = $request->disponibilidadecliente;
+        $oferta->preferenciacliente = $request->preferenciacliente;
         $oferta->usuario_id = $request->usuario_id;
         $oferta->categoria_id = $request->categoria_id;
+        $oferta->divisao_id = $request->divisao_id;
         $oferta->save();
 
         return redirect()->route('ofertas.index');
@@ -50,8 +57,9 @@ class OfertaController extends Controller
     {
         $Oferta = Oferta::findorFail($id);
         $categorias = Categoria::all();
+        $divisoes = Divisao::all();
         $usuarios = User::all();
-        return view('ofertas.edit',['Oferta'=>$Oferta, 'categorias' => $categorias, 'usuarios' => $usuarios]);
+        return view('ofertas.edit',['Oferta'=>$Oferta, 'categorias' => $categorias, 'divisoes' => $divisoes, 'usuarios' => $usuarios]);
     }
 
     public function update (Request $request)

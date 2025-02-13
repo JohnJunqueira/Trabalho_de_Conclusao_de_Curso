@@ -20,4 +20,14 @@ class Categoria extends Model
         return $this->hasMany(Divisao::class, 'categoria_id'); // Certifique-se que o campo 'categoria_id' existe na tabela divisões
     }
 
+    public function ofertas()
+    {
+        return $this->hasMany(Oferta::class, 'categoria_id'); // Certifique-se que o campo 'categoria_id' existe na tabela ofertas
+    }
+
+    public function servicos()
+    {
+        return $this->hasMany(Servico::class, 'categoria_id'); // Certifique-se que o campo 'categoria_id' existe na tabela serviços
+    }
+
 }

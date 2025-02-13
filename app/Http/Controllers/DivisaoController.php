@@ -19,12 +19,15 @@ class DivisaoController extends Controller
     }
 
     public function show($categoria_id){
+
         // Buscar a categoria pelo ID
         $categoria = Categoria::findOrFail($categoria_id);
 
-        $divisoes = $categoria->divisoes ?? []; // Supondo que a relação esteja definida no model e se a relação não for carregada corretamente, garantir que $divisoes seja um array vazio
+        // Buscar divisões relacionadas à categoria
+        $divisoes = Divisao::where('categoria_id', $categoria_id)->get();
 
-        return view('divisoes.show', compact('divisoes'));
+        $divisoes = $categoria->divisoes ?? []; // Supondo que a relação esteja definida no model e se a relação não for carregada corretamente, garantir que $divisoes seja um array vazio
+        return view('divisoes.show', compact('divisoes', 'categoria'));
     }
 
     public function create(Request $request)
@@ -45,7 +48,7 @@ class DivisaoController extends Controller
         $divisoes = new Divisao();
         $divisoes->nomedivisoes = $request->nomedivisoes;
         $divisoes->categoria_id = $request->categoria_id;
-        $divisoes->save();
+        $divisoes->save(); 
         return redirect()->route('divisoes.index');
     }
 

@@ -17,4 +17,13 @@ class Divisao extends Model
     public function acessarCategoria(){
         return $this->belongsTo(Categoria::class, 'categoria_id');
     }
+
+    public function ofertas()
+    {
+        return $this->hasMany(Oferta::class, 'divisao_id'); // Certifique-se que o campo 'divisao_id' existe na tabela ofertas
+    }
+    public function servicos()
+    {
+        return $this->hasMany(Servico::class, 'divisao_id'); // Certifique-se que o campo 'divisao_id' existe na tabela serviços
+    }
 }

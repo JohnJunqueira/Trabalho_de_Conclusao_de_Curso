@@ -74,6 +74,7 @@
                         <th>Frequência</th>
                         <th>Dias e Horários de Preferência</th>
                         <th>Categoria</th>
+                        <th>Divisão da Categoria</th>
                         <th>Usuário</th>
                     </tr>
                 </thead>
@@ -94,6 +95,7 @@
                         <td>{{$oferta->frequencia}}</td>
                         <td>{{$oferta->preferenciacliente}}</td>
                         <td>{{$oferta->acessarCategoria->nomecategoria}}</td>
+                        <td>{{$oferta->acessarDivisao->nomedivisoes}}</td>
                         <td>{{$oferta->acessarUsuario->name}}</td>
 
                         <td>

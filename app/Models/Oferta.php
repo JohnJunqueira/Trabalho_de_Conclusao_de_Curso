@@ -12,7 +12,7 @@ class Oferta extends Model
 
     protected $table = "ofertas";
 
-    protected $fillable = ['titulodaoferta', 'descricaodaoferta', 'urgencia', 'valorestimado', 'datapublicacao', 'datalimite', 'status', 'localizacao', 'contatodisponivel', 'frequencia', 'disponibilidadecliente', 'usuario_id', 'categoria_id'];
+    protected $fillable = ['titulodaoferta', 'descricaodaoferta', 'urgencia', 'valorestimado', 'datapublicacao', 'datalimite', 'status', 'localizacao', 'contatodisponivel', 'outroscontatos', 'frequencia', 'preferenciacliente', 'usuario_id', 'categoria_id', 'divisao_id'];
 
 
     public function acessarUsuario(){
@@ -20,5 +20,8 @@ class Oferta extends Model
     }
     public function acessarCategoria(){
         return $this->belongsTo(Categoria::class, 'categoria_id');
+    }
+    public function acessarDivisao(){
+        return $this->belongsTo(Divisao::class, 'divisao_id');
     }
 }

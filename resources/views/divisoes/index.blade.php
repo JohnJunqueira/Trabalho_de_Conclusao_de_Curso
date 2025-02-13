@@ -72,24 +72,30 @@
                             <td>{{$divisao->nomedivisoes}}</td>
                             <td>{{$divisao->acessarcategoria->nomecategoria}}</td>
 
-                            <td>
-                                <div class="col" id="meio">
-                                    <form action="{{route('divisoes.edit', ['id' => $divisao->id])}}" method="get">
-                                        @csrf
-                                        <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
-                                    </form>
-                                </div>
-                            </td>
+                            @php
+                                $role = Auth::user()->role ?? 'cliente'; // Garante que sempre tenha um valor
+                            @endphp
 
-                            <td>
-                                <div class="col" id="meio">
-                                    <form id="formExcluir" action="{{ route('divisoes.delete', ['id' => $divisao->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
-                                    </form>
-                                </div>
-                            </td>
+                            @if($role === 'admin')
+                                <td>
+                                    <div class="col" id="meio">
+                                        <form action="{{route('divisoes.edit', ['id' => $divisao->id])}}" method="get">
+                                            @csrf
+                                            <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
+                                        </form>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="col" id="meio">
+                                        <form id="formExcluir" action="{{ route('divisoes.delete', ['id' => $divisao->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
+                                        </form>
+                                    </div>
+                                </td>
+                            @endif
                         </tr>
                     </tbody>
                 @endforeach

@@ -156,6 +156,14 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="divisao_id" class="m-2 textoAzul3">Divisão da Categoria</label>
+                        <select id="divisao_id" class="w-auto form-control w-sm-auto" disabled>
+                            <option value="{{ $divisao->id }}" selected>{{ $divisao->nomedivisoes }}</option>
+                        </select>
+                        <input type="hidden" name="divisao_id" value="{{ $divisao->id }}">
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
                         <select id="usuario_id" class="w-auto form-control w-sm-auto" disabled>
                             <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>

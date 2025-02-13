@@ -21,6 +21,7 @@
     </div>
 
 </div>
+
 @endsection('cabecalho')
 
 @section('content')
@@ -95,15 +96,18 @@
 
 
                         @if($role === 'cliente')
-                        <td>
-                            <a href="{{ route('users.prestadores', ['categoria_id' => $categoria->id]) }}" class="btn btn-primary">
-                            Ver Prestadores
-                            </a>
-                        </td>
                             <td>
-                                <a href="{{ route('ofertas.create', ['categoria_id' => $categoria->id]) }}" class="btn btn-primary">
-                                Criar Oferta
-                                </a>
+                                <div class="d-flex justify-content-center">
+                                    <!-- Botão para Ver prestadores -->
+                                    <a href="{{ route('users.prestadores', ['categoria_id' => $categoria->id]) }}" class="btn btn-info me-2">
+                                    Ver Prestadores
+                                    </a>
+
+                                    <!-- Botão para Acessar Divisão por categoria -->
+                                    <a href="{{ route('divisoes.show', ['categoria_id' => $categoria->id]) }}" class="btn btn-success me-2">
+                                    Criar Oferta
+                                    </a>
+                                </div>
                             </td>
                         @endif
 
@@ -150,7 +154,7 @@
                 }
             @endphp
 
-            <a href="{{ $route }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Cancelar</a>
+            <a href="{{ $route }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Retornar</a>
 
             @if($role === 'admin')
                 <form action="{{route('categorias.create')}}" method="get">

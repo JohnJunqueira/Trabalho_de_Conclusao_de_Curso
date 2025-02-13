@@ -27,7 +27,7 @@ Route::prefix('categorias')->group(function () {
 //Divisoes
 Route::prefix('divisoes')->group(function () {
     Route::get('/index', [DivisaoController::class, 'index'])->middleware(['auth'])->name('divisoes.index');
-    Route::get('/show/{categoria_id}',[DivisaoController::class,'show'])->middleware(['auth', 'admin'])->name('divisoes.show');
+    Route::get('/show/{categoria_id}',[DivisaoController::class,'show'])->middleware(['auth'])->name('divisoes.show');
     Route::get('/create', [DivisaoController::class, 'create'])->middleware(['auth','admin'])->name('divisoes.create');
     Route::post('/store', [DivisaoController::class, 'store'])->middleware(['auth','admin'])->name('divisoes.store');
     Route::get('/edit/{id}', [DivisaoController::class, 'edit'])->middleware(['auth','admin'])->name('divisoes.edit');

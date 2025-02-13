@@ -142,6 +142,18 @@
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="divisao_id" class="m-2 textoAzul3">Divisão da Categoria</label>
+                        <select name="divisao_id" id="divisao_id" class="w-auto form-control w-sm-auto" required>
+                            <option value="" disabled>Selecione a divisão da categoria</option>
+                            @foreach($divisoes as $divisao)
+                            <option value="{{ $divisao->id }}" {{ $Oferta->divisao_id == $divisao->id ? 'selected' : '' }}>
+                                {{ $divisao->nomedivisoes}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
                         <select id="usuario_id" class="w-auto form-control w-sm-auto" disabled>
                             <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>

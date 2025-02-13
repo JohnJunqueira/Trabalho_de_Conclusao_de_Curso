@@ -12,13 +12,16 @@ class Servico extends Model
 
     protected $table = "servicos";
 
-    protected $fillable = ['titulodaespecialidade', 'descricaodaatividade', 'tempoexperiencia', 'servicosfrequentes', 'valormedio', 'formadetrabalho', 'formadepagamento', 'agendadisponivel', 'contatodisponivel', 'datacadastro', 'regioesatendidas', 'usuario_id', 'categoria_id'];
+    protected $fillable = ['titulodaespecialidade', 'descricaodaatividade', 'tempoexperiencia', 'servicosfrequentes', 'valormedio', 'formadetrabalho', 'formadepagamento', 'agendadisponivel', 'contatodisponivel', 'datacadastro', 'regioesatendidas', 'usuario_id', 'categoria_id', 'divisao_id'];
 
     public function acessarUsuario(){
         return $this->belongsTo(User::class, 'usuario_id');
     }
     public function acessarCategoria(){
         return $this->belongsTo(Categoria::class, 'categoria_id');
+    }
+    public function acessarDivisao(){
+        return $this->belongsTo(Divisao::class, 'divisao_id');
     }
 }
 

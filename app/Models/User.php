@@ -29,6 +29,21 @@ class User extends Authenticatable
         'role', // Adicione este campo
     ];
 
+    public function enderecos()
+    {
+        return $this->hasMany(Endereco::class, 'usuario_id'); // Certifique-se que o campo 'usuario_id' existe na tabela endereços
+    }
+
+    public function ofertas()
+    {
+        return $this->hasMany(Oferta::class, 'usuario_id'); // Certifique-se que o campo 'usuario_id' existe na tabela ofertas
+    }
+
+    public function servicos()
+    {
+        return $this->hasMany(Servico::class, 'usuario_id'); // Certifique-se que o campo 'usuario_id' existe na tabela serviços
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

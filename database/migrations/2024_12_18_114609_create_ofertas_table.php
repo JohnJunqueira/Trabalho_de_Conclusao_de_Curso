@@ -31,6 +31,8 @@ return new class extends Migration
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            $table->unsignedBigInteger('divisao_id');
+            $table->foreign('divisao_id')->references('id')->on('divisoes')->onDelete('cascade');
             //$table->softDeletes();
         });
     }
