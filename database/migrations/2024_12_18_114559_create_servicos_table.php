@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('agendadisponivel', 120);
             $table->string('contatodisponivel', 80);
             $table->string('outroscontatos', 100);
-            $table->dateTime('datacadastro');
+            $table->dateTime('datacadastro'); 
             //$table->string('portfolio')->nullable();
             $table->string('regioesatendidas', 120);
             $table->unsignedBigInteger('usuario_id');

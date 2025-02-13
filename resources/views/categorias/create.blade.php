@@ -93,12 +93,12 @@
                     });
                 </script>
 
-<script>
-    function submitForm(actionType) {
-        document.getElementById('action').value = actionType;
-        document.getElementById('categoriaForm').submit();
-    }
-</script>
+                <script>
+                    function submitForm(actionType) {
+                    document.getElementById('action').value = actionType;
+                    document.getElementById('categoriaForm').submit();
+                    }
+                </script>
 
             </form>
 

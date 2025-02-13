@@ -1,7 +1,6 @@
-
 @extends('layouts.main')
 
-@section('title', 'Divisoes')
+@section('title', 'Ofertas')
 
 @section('cabecalho')
 
@@ -49,7 +48,8 @@
         </svg>
     </a>
 
-    <h1>Divisões</h1><br>
+
+    <h1>Ofertas</h1><br>
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row">
@@ -58,51 +58,82 @@
         </div>
 
         <div class="row m-3">
-            @if (!empty($divisoes) && count($divisoes) > 0)
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
-                        <!--<th>Divisões</th>-->
-
+                        <th>Oferta</th>
+                        <th>Descrição da Oferta</th>
+                        <th>Urgência</th>
+                        <th>Valor Estimado</th>
+                        <th>Data Publicação</th>
+                        <th>Data Limite</th>
+                        <th>Status</th>
+                        <th>Local do serviço (Endereço)</th>
+                        <th>Contato Principal</th>
+                        <th>Outras Formas de Contato</th>
+                        <th>Frequência</th>
+                        <th>Dias e Horários de Preferência</th>
+                        <th>Categoria</th>
+                        <th>Usuário</th>
                     </tr>
                 </thead>
 
-                @foreach ($divisoes as $divisao)
-                    <tbody class="conteudo-itens">
-                        <tr>
-                            <td>{{$divisao->nomedivisoes}}</td>
+                @foreach ($ofertas as $oferta)
+                <tbody class="conteudo-itens">
+                    <tr>
+                        <td>{{$oferta->titulodaoferta}}</td>
+                        <td>{{$oferta->descricaodaoferta}}</td>
+                        <td>{{$oferta->urgencia}}</td>
+                        <td>{{$oferta->valorestimado}}</td>
+                        <td>{{ \Carbon\Carbon::parse($oferta->datapublicacao)->format('d/m/Y H:i') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($oferta->datalimite)->format('d/m/Y') }}</td>
+                        <td>{{$oferta->status}}</td>
+                        <td>{{$oferta->localizacao}}</td>
+                        <td>{{$oferta->contatodisponivel}}</td>
+                        <td>{{$oferta->outroscontatos}}</td>
+                        <td>{{$oferta->frequencia}}</td>
+                        <td>{{$oferta->preferenciacliente}}</td>
+                        <td>{{$oferta->acessarCategoria->nomecategoria}}</td>
+                        <td>{{$oferta->acessarUsuario->name}}</td>
 
-                            <td>
-                                <div class="col" id="meio">
-                                    <form action="{{route('divisoes.edit', ['id' => $divisao->id])}}" method="get">
-                                        @csrf
-                                        <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
-                                    </form>
-                                </div>
-                            </td>
+                        <td>
+                            <div class="col" id="meio">
+                                <form action="{{route('ofertas.edit', ['id' => $oferta->id])}}" method="get">
+                                    @csrf
+                                    <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
+                                </form>
+                            </div>
+                        </td>
 
-                            <td>
-                                <div class="col" id="meio">
-                                    <form id="formExcluir" action="{{ route('divisoes.delete', ['id' => $divisao->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                        <td>
+                            <div class="col" id="meio">
+                                <form id="formExcluir" action="{{ route('ofertas.delete', ['id' => $oferta->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
+                                </form>
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+
                 @endforeach
             </table>
-            @else
-                <p class="text-center">Nenhuma divisão cadastrada para esta categoria.</p>
-            @endif
         </div>
 
+
         <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
-            <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
+            <a href="{{ route ('dashboard') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
+            <form action="{{route('categorias.index')}}" method="get">
+                @csrf
+                <input type="submit" class="btn btn-success" value="Nova">
+            </form>
         </div>
+
+
     </div>
+
 </div>
 
 <!-- Modal -->
@@ -113,7 +144,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Excluir item</h5>
             </div>
             <div class="modal-body"><!--Modal-body-->
-                Tem certeza que deseja excluir essa Divisão?
+                Tem certeza que deseja excluir essa Oferta?
             </div>
             <div class="modal-footer row"><!--Modal-footer-->
                 <div class="col d-flex justify-content-around">
@@ -130,7 +161,7 @@
 
 <script>
     function confirmarExclusao() {
-        if (confirm("Tem certeza que deseja excluir essa Divisão?")) {
+        if (confirm("Tem certeza que deseja excluir essa Oferta?")) {
             document.getElementById('formExcluir').submit();
             return true;
         } else {

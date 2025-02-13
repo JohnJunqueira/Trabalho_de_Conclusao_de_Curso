@@ -46,7 +46,7 @@ class DivisaoController extends Controller
         $divisoes->nomedivisoes = $request->nomedivisoes;
         $divisoes->categoria_id = $request->categoria_id;
         $divisoes->save();
-        return redirect()->route('categorias.index');
+        return redirect()->route('divisoes.index');
     }
 
     public function edit($id)

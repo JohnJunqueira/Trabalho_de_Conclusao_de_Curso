@@ -111,12 +111,7 @@
                         <label for="datacadastro" class="m-2 textoAzul3">Data do Cadastro</label>
                         <input value="{{$Servico->datacadastro}}" type="datetime-local" id="datacadastro" class="w-auto form-control w-sm-auto" name="datacadastro" required readonly>
                     </div>
-
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="portfolio" class="m-2 textoAzul3">Portfólio</label>
-                        <input value="{{$Servico->portfolio}}" type="text" id="portfolio" class="w-auto form-control w-sm-auto" name="portfolio" required>
-                    </div>
-
+                    
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="regioesatendidas" class="m-2 textoAzul3">Regiões Atendidas</label>
                         <input value="{{$Servico->regioesatendidas}}" type="text" id="regioesatendidas" class="w-auto form-control w-sm-auto" name="regioesatendidas" required>
