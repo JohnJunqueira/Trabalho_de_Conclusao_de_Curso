@@ -24,7 +24,7 @@ Route::prefix('categorias')->group(function () {
     Route::delete('/delete/{id}', [CategoriaController::class, 'destroy'])->middleware(['auth','admin'])->name('categorias.delete');
 });
 
-//Divisoes 
+//Divisoes
 Route::prefix('divisoes')->group(function () {
     Route::get('/index', [DivisaoController::class, 'index'])->middleware(['auth'])->name('divisoes.index');
     Route::get('/show/{categoria_id}',[DivisaoController::class,'show'])->middleware(['auth', 'admin'])->name('divisoes.show');
@@ -39,6 +39,8 @@ Route::prefix('divisoes')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/prestadores', [UserController::class, 'listarPrestadores'])->middleware(['auth','admin'])->name('users.prestadores');
     Route::get('/clientes', [UserController::class, 'listarClientes'])->middleware(['auth','admin'])->name('users.clientes');
+    Route::get('/prestadores/show/{id}',[UserController::class,'show'])->middleware(['auth'])->name('prestadores.show');
+    Route::get('/clientes/show/{id}',[UserController::class,'show'])->middleware(['auth'])->name('clientes.show');
     // Rota para editar dados de ambos usuários
     Route::get('/{id}/edit', [UserController::class, 'edit'])->middleware(['auth','admin'])->name('users.edit');
     // Rota para atualizar os dados (PATCH ou PUT)

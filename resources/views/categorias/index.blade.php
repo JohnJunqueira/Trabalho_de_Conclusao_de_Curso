@@ -61,9 +61,9 @@
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
-                        <th>Categorias</th>
+
                         @if (Auth::user()->role === 'admin')
-                            <th>Ações</th>
+
                         @endif
                     </tr>
                 </thead>
@@ -95,6 +95,11 @@
 
 
                         @if($role === 'cliente')
+                        <td>
+                            <a href="{{ route('users.prestadores', ['categoria_id' => $categoria->id]) }}" class="btn btn-primary">
+                            Ver Prestadores
+                            </a>
+                        </td>
                             <td>
                                 <a href="{{ route('ofertas.create', ['categoria_id' => $categoria->id]) }}" class="btn btn-primary">
                                 Criar Oferta
