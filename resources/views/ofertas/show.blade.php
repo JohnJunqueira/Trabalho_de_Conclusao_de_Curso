@@ -74,6 +74,7 @@
                         <th>Frequência</th>
                         <th>Dias e Horários de Preferência</th>
                         <th>Categoria</th>
+                        <th>Divisão da Categoria</th>
                         <th>Usuário</th>
                     </tr>
                 </thead>
@@ -94,30 +95,36 @@
                         <td>{{$oferta->frequencia}}</td>
                         <td>{{$oferta->preferenciacliente}}</td>
                         <td>{{$oferta->acessarCategoria->nomecategoria}}</td>
+                        <td>{{$oferta->acessarDivisao->nomedivisoes}}</td>
                         <td>{{$oferta->acessarUsuario->name}}</td>
 
-                        <td>
-                            <div class="col" id="meio">
-                                <form action="{{route('ofertas.edit', ['id' => $oferta->id])}}" method="get">
-                                    @csrf
-                                    <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
-                                </form>
-                            </div>
-                        </td>
+                        @php
+                            $user = auth()->user();
+                        @endphp
 
-                        <td>
-                            <div class="col" id="meio">
-                                <form id="formExcluir" action="{{ route('ofertas.delete', ['id' => $oferta->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
-                                </form>
-                            </div>
-                        </td>
+                        <!-- Verifica se o usuário é Admin ou Prestador -->
+                        @if ($user && ($user->role === 'admin' || $user->role === 'cliente'))
+                            <td>
+                                <div class="col" id="meio">
+                                    <form action="{{route('ofertas.edit', ['id' => $oferta->id])}}" method="get">
+                                        @csrf
+                                        <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
+                                    </form>
+                                </div>
+                            </td>
 
+                            <td>
+                                <div class="col" id="meio">
+                                    <form id="formExcluir" action="{{ route('ofertas.delete', ['id' => $oferta->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
+                                    </form>
+                                </div>
+                            </td>
+                        @endif
                     </tr>
                 </tbody>
-
                 @endforeach
             </table>
         </div>
@@ -125,13 +132,14 @@
 
         <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
             <a href="{{ route ('dashboard') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
-            <form action="{{route('categorias.index')}}" method="get">
-                @csrf
-                <input type="submit" class="btn btn-success" value="Nova">
-            </form>
+
+            @if ($user && ($user->role === 'admin' || $user->role === 'cliente'))
+                <form action="{{route('categorias.index')}}" method="get">
+                    @csrf
+                    <input type="submit" class="btn btn-success" value="Nova">
+                </form>
+            @endif
         </div>
-
-
     </div>
 
 </div>

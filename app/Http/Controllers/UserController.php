@@ -4,20 +4,61 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\Prestador;
 use App\Models\User;
+use App\Models\Divisao;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function listarPrestadores()
     {
+        // Obtendo todos os Prestadores
         $prestadores = User::where('role', 'prestador')->get();
         return view('users.prestadores', compact('prestadores'));
+
     }
+
+    public function listarPrestadoresFiltrados($categoriaId  = null, $divisaoId = null)
+    {
+        // Se não houver categoria e divisão, retorna todos os prestadores (para admin)
+        if (is_null($categoriaId) || is_null($divisaoId)) {
+            $prestadores = User::where('role', 'prestador')->get();
+        } else {
+        // Buscar apenas prestadores que cadastraram serviços na categoria e divisão selecionadas
+        $prestadores = User::where('role', 'prestador')
+            ->whereHas('servicos', function ($query) use ($categoriaId, $divisaoId) {
+                $query->where('categoria_id', $categoriaId)
+                    ->where('divisao_id', $divisaoId);
+            })->get();
+        }
+
+        return view('users.prestadores-filtrados', compact('prestadores', 'categoriaId', 'divisaoId'));
+    }
+
 
     public function listarClientes()
     {
         $clientes = User::where('role', 'cliente')->get();
         return view('users.clientes', compact('clientes'));
+    }
+
+    public function listarClientesFiltrados($categoriaId  = null, $divisaoId = null)
+    {
+        // Buscar a divisão para evitar erro de variável indefinida
+        $divisao = Divisao::find($divisaoId);
+
+        // Se não houver categoria e divisão, retorna todos os clientes (para admin)
+        if (is_null($categoriaId) || is_null($divisaoId)) {
+            $clientes = User::where('role', 'cliente')->get();
+        } else {
+        // Buscar apenas clientes que cadastraram ofertas de serviços na categoria e divisão selecionadas
+        $clientes = User::where('role', 'cliente')
+            ->whereHas('ofertas', function ($query) use ($categoriaId, $divisaoId) {
+                $query->where('categoria_id', $categoriaId)
+                    ->where('divisao_id', $divisaoId);
+            })->get();
+        }
+
+        return view('users.clientes-filtrados', compact('clientes', 'categoriaId', 'divisaoId'));
     }
 
     // Mostrar formulário de edição

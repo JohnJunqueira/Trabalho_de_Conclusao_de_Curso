@@ -74,6 +74,7 @@
                         <th>Data do Cadastro</th>
                         <th>Regiões Atendidas</th>
                         <th>Categoria</th>
+                        <th>Divisão da Categoria</th>
                         <th>Usuário</th>
                     </tr>
                 </thead>
@@ -90,31 +91,38 @@
                         <td>{{$servico->formadepagamento}}</td>
                         <td>{{$servico->agendadisponivel}}</td>
                         <td>{{$servico->contatodisponivel}}</td>
-                        <td>{{$oferta->outroscontatos}}</td>
+                        <td>{{$servico->outroscontatos}}</td>
                         <td>{{ \Carbon\Carbon::parse($servico->datacadastro)->format('d/m/Y H:i') }}</td>
                         <td>{{$servico->regioesatendidas}}</td>
                         <td>{{$servico->acessarCategoria->nomecategoria}}</td>
+                        <td>{{$servico->acessarDivisao->nomedivisoes}}</td>
                         <td>{{ optional($servico->acessarUsuario)->name ?? 'Usuário não definido' }}</td>
 
-                        <td>
-                            <div class="col" id="meio">
-                                <form action="{{route('servicos.edit', ['id' => $servico->id])}}" method="get">
-                                    @csrf
-                                    <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
-                                </form>
-                            </div>
-                        </td>
+                        @php
+                            $user = auth()->user();
+                        @endphp
 
-                        <td>
-                            <div class="col" id="meio">
-                                <form id="formExcluir" action="{{ route('servicos.delete', ['id' => $servico->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
-                                </form>
-                            </div>
-                        </td>
+                        <!-- Verifica se o usuário é Admin ou Prestador -->
+                        @if ($user && ($user->role === 'admin' || $user->role === 'prestador'))
+                            <td>
+                                <div class="col" id="meio">
+                                    <form action="{{route('servicos.edit', ['id' => $servico->id])}}"   method="get">
+                                        @csrf
+                                        <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
+                                    </form>
+                                </div>
+                            </td>
 
+                            <td>
+                                <div class="col" id="meio">
+                                    <form id="formExcluir" action="{{ route('servicos.delete', ['id' => $servico->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
+                                    </form>
+                                </div>
+                            </td>
+                        @endif
                     </tr>
                 </tbody>
 
@@ -125,10 +133,13 @@
 
         <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
             <a href="{{ route ('prestador.dashboard') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
-            <form action="{{route('servicos.create')}}" method="get">
-                @csrf
-                <input type="submit" class="btn btn-success" value="+Novo Serviço">
-            </form>
+
+            @if ($user && ($user->role === 'admin' || $user->role === 'prestador'))
+                <form action="{{route('categorias.index')}}" method="get">
+                    @csrf
+                    <input type="submit" class="btn btn-success" value="+Novo Serviço">
+                </form>
+            @endif
         </div>
 
 

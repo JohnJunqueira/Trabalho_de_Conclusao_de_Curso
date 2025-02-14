@@ -111,18 +111,10 @@
                         <label for="datacadastro" class="m-2 textoAzul3">Data do Cadastro</label>
                         <input value="{{$Servico->datacadastro}}" type="datetime-local" id="datacadastro" class="w-auto form-control w-sm-auto" name="datacadastro" required readonly>
                     </div>
-                    
+
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="regioesatendidas" class="m-2 textoAzul3">Regiões Atendidas</label>
                         <input value="{{$Servico->regioesatendidas}}" type="text" id="regioesatendidas" class="w-auto form-control w-sm-auto" name="regioesatendidas" required>
-                    </div>
-
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-                        <select id="usuario_id" class="w-auto form-control w-sm-auto" disabled>
-                            <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>
-                        </select>
-                        <input type="hidden" name="usuario_id" value="{{ auth()->user()->id }}">
                     </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -135,6 +127,26 @@
                             </option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="divisao_id" class="m-2 textoAzul3">Divisão da Categoria</label>
+                        <select name="divisao_id" id="divisao_id" class="w-auto form-control w-sm-auto" required>
+                            <option value="" disabled>Selecione a divisão da categoria</option>
+                            @foreach($divisoes as $divisao)
+                            <option value="{{ $divisao->id }}" {{ $Servico->divisao_id == $divisao->id ? 'selected' : '' }}>
+                                {{ $divisao->nomedivisoes}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
+                        <select id="usuario_id" class="w-auto form-control w-sm-auto" disabled>
+                            <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>
+                        </select>
+                        <input type="hidden" name="usuario_id" value="{{ auth()->user()->id }}">
                     </div>
                 </div>
             </div>

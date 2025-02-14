@@ -98,12 +98,12 @@
                         @if($role === 'cliente')
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <!-- Botão para Ver prestadores -->
-                                    <a href="{{ route('users.prestadores', ['categoria_id' => $categoria->id]) }}" class="btn btn-info me-2">
-                                    Ver Prestadores
+                                    <!-- Botão para Acessar Divisão por Categoria -->
+                                    <a href="{{ route('divisoes.show', ['categoria_id' => $categoria->id]) }}" class="btn btn-info me-2">
+                                    Buscar Prestadores
                                     </a>
 
-                                    <!-- Botão para Acessar Divisão por categoria -->
+                                    <!-- Botão para Acessar Divisão por Categoria -->
                                     <a href="{{ route('divisoes.show', ['categoria_id' => $categoria->id]) }}" class="btn btn-success me-2">
                                     Criar Oferta
                                     </a>
@@ -111,7 +111,21 @@
                             </td>
                         @endif
 
+                        @if($role === 'prestador')
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <!-- Botão para Ver prestadores -->
+                                    <a href="{{ route('divisoes.show', ['categoria_id' => $categoria->id]) }}" class="btn btn-info me-2">
+                                    Pesquisar Clientes
+                                    </a>
 
+                                    <!-- Botão para Acessar Divisão por categoria -->
+                                    <a href="{{ route('divisoes.show', ['categoria_id' => $categoria->id]) }}" class="btn btn-success me-2">
+                                    Cadastrar Serviço
+                                    </a>
+                                </div>
+                            </td>
+                        @endif
 
                         @if($role === 'admin')
                             <td>

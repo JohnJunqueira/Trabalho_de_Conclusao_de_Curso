@@ -8,15 +8,42 @@ use App\Models\Categoria;
 use App\Models\User;
 use App\Models\Divisao;
 use Illuminate\Database\QueryException;
-
+use Illuminate\Support\Facades\Auth;
 
 class OfertaController extends Controller
 {
     public function index()
     {
-        $ofertas = Oferta::all();
-        return view('ofertas.index', ['ofertas'=>$ofertas]);
+        // Obtém o usuário logado
+        $user = Auth::user();
+
+        // Verifica se o usuário é um prestador
+        if ($user->role === 'cliente') {
+            // Obtém apenas os serviços do prestador logado
+            $ofertas = Oferta::where('usuario_id', $user->id)->get();
+        } else {
+            // Se for admin, mostra todos os serviços
+            $ofertas = Oferta::all();
+        }
+            // Passa a variável $user para a view
+            return view('ofertas.index', compact('ofertas', 'user'));
     }
+
+    public function show($cliente_id, $divisao_id)
+    {
+        // Busca o cliente
+        $cliente = User::findOrFail($cliente_id);
+
+        // Busca a divisão
+        $divisao = Divisao::findOrFail($divisao_id);
+
+        // Filtra apenas as ofertas do cliente naquela divisão
+        $ofertas = $cliente->ofertas()->where('divisao_id', $divisao_id)->get();
+
+        // Retorna a view com os dados necessários
+        return view('ofertas.show', compact('cliente', 'ofertas', 'divisao'));
+}
+
 
     public function create(Request $request)
     {

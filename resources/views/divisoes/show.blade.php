@@ -99,9 +99,28 @@
 
                             @if ($role === 'cliente')
                                 <td>
+                                    <!-- Botão para visualizar Prestadores por Divisão de categoria -->
+                                    <a href="{{ route('users.prestadores.filtrados', ['categoria_id' => $categoria->id, 'divisao_id' => $divisao->id]) }}" class="btn btn-success me-2">
+                                    Visualizar
+                                    </a>
+
                                     <!-- Botão para criar Oferta por Divisão de categoria -->
                                     <a href="{{ route('ofertas.create', ['categoria_id' => $categoria->id, 'divisao_id' => $divisao->id]) }}" class="btn btn-success me-2">
                                     Criar
+                                    </a>
+                                </td>
+                            @endif
+
+                            @if ($role === 'prestador')
+                                <td>
+                                    <!-- Botão para visualizar Prestadores por Divisão de categoria -->
+                                    <a href="{{ route('users.clientes.filtrados', ['categoria_id' => $categoria->id, 'divisao_id' => $divisao->id]) }}" class="btn btn-success me-2">
+                                    Ver Ofertas
+                                    </a>
+
+                                    <!-- Botão para Cadastrar Serviço por Divisão de categoria -->
+                                    <a href="{{ route('servicos.create', ['categoria_id' => $categoria->id, 'divisao_id' => $divisao->id]) }}" class="btn btn-success me-2">
+                                    Cadastre
                                     </a>
                                 </td>
                             @endif

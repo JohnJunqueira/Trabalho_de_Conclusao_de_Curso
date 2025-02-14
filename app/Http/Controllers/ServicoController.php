@@ -5,22 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Servico;
 use App\Models\Categoria;
+use App\Models\Divisao;
 use App\Models\User;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class ServicoController extends Controller
 {
     public function index()
     {
-        $servicos = Servico::all();
-        return view('servicos.index', ['servicos'=>$servicos]);
+        // Obtém o usuário logado
+        $user = Auth::user();
+
+        // Verifica se o usuário é um prestador
+        if ($user->role === 'prestador') {
+            // Obtém apenas os serviços do prestador logado
+            $servicos = Servico::where('usuario_id', $user->id)->get();
+        } else {
+            // Se for admin, mostra todos os serviços
+            $servicos = Servico::all();
+        }
+            // Passa a variável $user para a view
+            return view('servicos.index', compact('servicos', 'user'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $categorias = Categoria::all();
+        $categoria = Categoria::findOrFail($request->categoria_id); // Obtém a categoria pelo ID passado na URL
+        $divisao = Divisao::findOrFail($request->divisao_id); // Obtém a divisão com base no ID passado
         $usuarios = User::all();
-        return view('servicos.create', ['categorias' => $categorias, 'usuarios' => $usuarios]);
+        return view('servicos.create', ['categoria' => $categoria, 'divisao' => $divisao, 'usuarios' => $usuarios]);
     }
 
     //Método post enviando dados pela requisição-> Request $request;
@@ -35,9 +49,11 @@ class ServicoController extends Controller
         $servico->formadepagamento = $request->formadepagamento;
         $servico->agendadisponivel =$request->agendadisponivel;
         $servico->contatodisponivel = $request->contatodisponivel;
+        $servico->outroscontatos = $request->outroscontatos;
         $servico->datacadastro = $request->datacadastro;
         $servico->regioesatendidas = $request->regioesatendidas;
         $servico->categoria_id = $request->categoria_id;
+        $servico->divisao_id = $request->divisao_id;
         $servico->usuario_id = $request->usuario_id;
         $servico->save();
         return redirect()->route('servicos.index');
@@ -47,8 +63,9 @@ class ServicoController extends Controller
     {
         $Servico = Servico::findorFail($id);
         $categorias = Categoria::all();
+        $divisoes = Divisao::all();
         $usuarios = User::all();
-        return view('servicos.edit',['Servico'=>$Servico, 'categorias' => $categorias, 'usuarios' => $usuarios]);
+        return view('servicos.edit',['Servico'=> $Servico, 'categorias' => $categorias, 'divisoes' => $divisoes, 'usuarios' => $usuarios]);
     }
 
     public function update (Request $request)

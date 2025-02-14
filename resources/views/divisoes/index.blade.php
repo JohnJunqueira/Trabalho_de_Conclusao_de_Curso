@@ -57,7 +57,7 @@
         </div>
 
         <div class="row m-3">
-            @if (!empty($divisoes) && count($divisoes) > 0)
+            @if (!empty($divisoes) && count($divisoes) > 0)  
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
