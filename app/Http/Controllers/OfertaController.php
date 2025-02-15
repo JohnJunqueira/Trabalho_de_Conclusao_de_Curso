@@ -42,7 +42,7 @@ class OfertaController extends Controller
 
         // Retorna a view com os dados necessários
         return view('ofertas.show', compact('cliente', 'ofertas', 'divisao'));
-}
+    }
 
 
     public function create(Request $request)

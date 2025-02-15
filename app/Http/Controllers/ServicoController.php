@@ -29,6 +29,21 @@ class ServicoController extends Controller
             return view('servicos.index', compact('servicos', 'user'));
     }
 
+    public function show($prestador_id, $divisao_id)
+    {
+        // Busca o cliente
+        $prestador = User::findOrFail($prestador_id);
+
+        // Busca a divisão
+        $divisao = Divisao::findOrFail($divisao_id);
+
+        // Filtra apenas os serviços do prestador naquela divisão
+        $servicos = $prestador->servicos()->where('divisao_id', $divisao_id)->get();
+
+        // Retorna a view com os dados necessários
+        return view('servicos.show', compact('prestador', 'servicos', 'divisao'));
+    }
+
     public function create(Request $request)
     {
         $categoria = Categoria::findOrFail($request->categoria_id); // Obtém a categoria pelo ID passado na URL

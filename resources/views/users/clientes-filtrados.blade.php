@@ -34,8 +34,6 @@
 
                             <td>
                                 <!-- Botão Ver Ofertas -->
-                                
-
                                 <a href="{{ route('ofertas.show', ['cliente_id' => $cliente->id, 'divisao_id' => $divisaoId]) }}" class="btn btn-warning">Ver ofertas</a>
 
                             </td>

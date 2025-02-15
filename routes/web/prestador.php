@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\PrestadorController;
 use App\Http\Controllers\ServicoController;
+use App\Models\Servico;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,7 +14,9 @@ Route::get('prestador/dashboard', [PrestadorController::class, 'dashboard'])
 //Serviços
 Route::prefix('servicos')->group(function () {
     Route::get('/index', [ServicoController::class, 'index'])->middleware(['auth'])->name('servicos.index');
-    Route::get('/show/{id}',[ServicoController::class,'show'])->middleware(['auth'])->name('servicos.show');
+     
+    Route::get('/show/{prestador_id}/{divisao_id}', [ServicoController::class, 'show'])->name('servicos.show');
+
     Route::get('/create', [ServicoController::class, 'create'])->middleware(['auth','prestador'])->name('servicos.create');
     Route::post('/store', [ServicoController::class, 'store'])->middleware(['auth','prestador'])->name('servicos.store');
     Route::get('/edit/{id}', [ServicoController::class, 'edit'])->middleware(['auth','prestadorOrAdmin'])->name('servicos.edit');

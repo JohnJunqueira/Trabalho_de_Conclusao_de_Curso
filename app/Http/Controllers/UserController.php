@@ -19,6 +19,9 @@ class UserController extends Controller
 
     public function listarPrestadoresFiltrados($categoriaId  = null, $divisaoId = null)
     {
+        // Buscar a divisão para evitar erro de variável indefinida
+        $divisao = Divisao::find($divisaoId);
+        
         // Se não houver categoria e divisão, retorna todos os prestadores (para admin)
         if (is_null($categoriaId) || is_null($divisaoId)) {
             $prestadores = User::where('role', 'prestador')->get();

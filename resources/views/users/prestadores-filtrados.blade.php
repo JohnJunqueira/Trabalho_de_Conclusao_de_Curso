@@ -34,7 +34,7 @@
 
                             <td>
                                 <!-- Botão Ver Serviços -->
-                                <a href="{{ route('servicos.index', $prestador->id) }}" class="btn btn-warning">Ver Serviços</a>
+                                <a href="{{ route('servicos.show', ['prestador_id' => $prestador->id, 'divisao_id' => $divisaoId]) }}" class="btn btn-warning">Ver Serviços</a>
                             </td>
                         </tr>
                     </tbody>
