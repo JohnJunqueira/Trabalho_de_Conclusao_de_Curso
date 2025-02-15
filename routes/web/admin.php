@@ -39,14 +39,8 @@ Route::prefix('divisoes')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/prestadores', [UserController::class, 'listarPrestadores'])->middleware(['auth', 'admin'])->name('users.prestadores');
     Route::get('/clientes', [UserController::class, 'listarClientes'])->middleware(['auth','admin'])->name('users.clientes');
-
-
     Route::get('/prestadores-filtrados/{categoria_id}/{divisao_id}', [UserController::class, 'listarPrestadoresFiltrados'])->middleware(['auth'])->name('users.prestadores.filtrados');
-
     Route::get('/clientes-filtrados/{categoria_id}/{divisao_id}', [UserController::class, 'listarClientesFiltrados'])->middleware(['auth'])->name('users.clientes.filtrados');
-
-
-
     Route::get('/show/{id}',[UserController::class,'show'])->middleware(['auth'])->name('prestadores.show');
     Route::get('/clientes/show/{id}',[UserController::class,'show'])->middleware(['auth'])->name('clientes.show');
     // Rota para editar dados de ambos usuários

@@ -1,0 +1,19 @@
+
+th, td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+th {
+    white-space: nowrap; /* Impede quebra de linha */
+    padding: 10px; /* Adiciona espaçamento interno */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+td {
+    text-align: justify;
+    word-break: break-word; /* Para que textos longos quebrem corretamente */
+}
+
+
+
