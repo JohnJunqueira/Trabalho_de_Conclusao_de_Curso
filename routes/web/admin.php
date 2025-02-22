@@ -55,7 +55,7 @@ Route::prefix('users')->group(function () {
 //Endereços
 Route::prefix('enderecos')->group(function () {
     Route::get('/index', [EnderecoController::class, 'index'])->middleware(['auth'])->name('enderecos.index');
-    Route::get('/create', [EnderecoController::class, 'create'])->middleware(['auth','prestadorOrAdmin'])->name('enderecos.create');
+    Route::get('/create', [EnderecoController::class, 'create'])->middleware(['auth'])->name('enderecos.create');
     Route::post('/store', [EnderecoController::class, 'store'])->middleware(['auth'])->name('enderecos.store');
     Route::get('/show/{id}',[EnderecoController::class,'show'])->middleware(['auth'])->name('enderecos.show');
     Route::get('/edit/{id}', [EnderecoController::class, 'edit'])->middleware(['auth'])->name('enderecos.edit');

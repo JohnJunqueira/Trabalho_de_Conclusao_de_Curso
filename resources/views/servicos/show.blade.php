@@ -49,7 +49,7 @@
     </a>
 
 
-    <h1>Serviços</h1><br>
+    <h1 class="text-center">Serviços</h1><br>
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row">
@@ -61,42 +61,42 @@
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
-                        <th>Especialidade</th>
-                        <th>Descrição da Atividade</th>
-                        <th>Tempo de Experiência</th>
-                        <th>Serviços Frequentes</th>
-                        <th>Valor Médio</th>
-                        <th>Forma de Trabalho</th>
-                        <th>Forma de Pagamento</th>
-                        <th>Agenda Disponível</th>
-                        <th>Contato Principal</th>
-                        <th>Outras Formas de Contato</th>
-                        <th>Data do Cadastro</th>
-                        <th>Regiões Atendidas</th>
-                        <th>Categoria</th>
-                        <th>Divisão da Categoria</th>
-                        <th>Usuário</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Especialidade</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Descrição da Atividade</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Tempo de Experiência</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Serviços Frequentes</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Valor Médio</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Forma de Trabalho</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Forma de Pagamento</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Agenda Disponível</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Contato Principal</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Outras Formas de Contato</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Data do Cadastro</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Regiões Atendidas</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Categoria</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Divisão da Categoria</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Prestador</th>
                     </tr>
                 </thead>
 
                 @foreach ($servicos as $servico)
                 <tbody class="conteudo-itens">
                     <tr>
-                        <td>{{$servico->titulodaespecialidade}}</td>
-                        <td>{{$servico->descricaodaatividade}}</td>
-                        <td>{{$servico->tempoexperiencia}}</td>
-                        <td>{{$servico->servicosfrequentes}}</td>
-                        <td>{{$servico->valormedio}}</td>
-                        <td>{{$servico->formadetrabalho}}</td>
-                        <td>{{$servico->formadepagamento}}</td>
-                        <td>{{$servico->agendadisponivel}}</td>
-                        <td>{{$servico->contatodisponivel}}</td>
-                        <td>{{$servico->outroscontatos}}</td>
-                        <td>{{ \Carbon\Carbon::parse($servico->datacadastro)->format('d/m/Y H:i') }}</td>
-                        <td>{{$servico->regioesatendidas}}</td>
-                        <td>{{$servico->acessarCategoria->nomecategoria}}</td>
-                        <td>{{$servico->acessarDivisao->nomedivisoes}}</td>
-                        <td>{{ optional($servico->acessarUsuario)->name ?? 'Usuário não definido' }}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->titulodaespecialidade}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->descricaodaatividade}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->tempoexperiencia}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->servicosfrequentes}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->valormedio}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->formadetrabalho}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->formadepagamento}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->agendadisponivel}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->contatodisponivel}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->outroscontatos}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{ \Carbon\Carbon::parse($servico->datacadastro)->format('d/m/Y H:i') }}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->regioesatendidas}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->acessarCategoria->nomecategoria}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$servico->acessarDivisao->nomedivisoes}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{ optional($servico->acessarUsuario)->name ?? 'Usuário não definido' }}</td>
                     </tr>
                 </tbody>
                 @endforeach

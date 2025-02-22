@@ -12,12 +12,12 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Nome Completo</th>
-                        <th>Email</th>
-                        <th>Apelido Profissional</th>
-                        <th>Gênero</th>
-                        <th>Data de Nascimento</th>
-                        <th>Celular</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Nome Completo</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Email</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Apelido</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Gênero</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Data de Nascimento</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Celular</th>
                     </tr>
                 </thead>
 
@@ -25,14 +25,14 @@
                 @foreach($clientes as $cliente)
                     <tbody class="conteudo-itens">
                         <tr>
-                            <td>{{ $cliente->name }}</td>
-                            <td>{{ $cliente->email }}</td>
-                            <td>{{ $cliente->apelidoprofissional }}</td>
-                            <td>{{ $cliente->genero }}</td>
-                            <td>{{ $cliente->datadenascimento }}</td>
-                            <td>{{ $cliente->celular }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $cliente->name }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $cliente->email }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $cliente->apelidoprofissional }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $cliente->genero }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $cliente->datadenascimento }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $cliente->celular }}</td>
 
-                            <td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">
                                 <!-- Botão Ver Ofertas -->
                                 <a href="{{ route('ofertas.show', ['cliente_id' => $cliente->id, 'divisao_id' => $divisaoId]) }}" class="btn btn-warning">Ver ofertas</a>
 

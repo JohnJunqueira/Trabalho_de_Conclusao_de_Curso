@@ -12,12 +12,12 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Nome Completo</th>
-                        <th>Email</th>
-                        <th>Apelido Profissional</th>
-                        <th>Gênero</th>
-                        <th>Data de Nascimento</th>
-                        <th>Celular</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Nome Completo</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Email</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Apelido Profissional</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Gênero</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Data de Nascimento</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Celular</th>
                     </tr>
                 </thead>
 
@@ -25,12 +25,12 @@
                 @foreach($prestadores as $prestador)
                     <tbody class="conteudo-itens">
                         <tr>
-                            <td>{{ $prestador->name }}</td>
-                            <td>{{ $prestador->email }}</td>
-                            <td>{{ $prestador->apelidoprofissional }}</td>
-                            <td>{{ $prestador->genero }}</td>
-                            <td>{{ $prestador->datadenascimento }}</td>
-                            <td>{{ $prestador->celular }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->name }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->email }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->apelidoprofissional }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->genero }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->datadenascimento }}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->celular }}</td>
 
                             <td>
                                 <!-- Botão Ver Serviços -->

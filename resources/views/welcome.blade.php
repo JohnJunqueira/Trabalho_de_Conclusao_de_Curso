@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <head>
+            <link rel="icon" href="{{ asset('images/my-favicon.ico/iconecorte.png') }}" type="image/x-icon">
+        </head>
+
         <title>O&C Serviços</title>
 
         <!-- Fonts -->

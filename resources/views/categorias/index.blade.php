@@ -50,9 +50,9 @@
     </a>
 
 
-    <h1>Categorias</h1><br>
+    <h1 class="text-center">Categorias</h1><br>
 
-    <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
+
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
             </div>
@@ -62,25 +62,26 @@
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
-
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Categorias</th>
                         @if (Auth::user()->role === 'admin')
-
+                            <th class="text-start border border-gray-300 px-4 py-2" style="width: 100px;">Acesso Exclusivo do Admin</th>
                         @endif
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 100px;">Opções para Categorias</th>
                     </tr>
                 </thead>
 
                 @foreach ($categorias as $categoria)
                 <tbody class="conteudo-itens">
                     <tr>
-                        <td>{{$categoria->nomecategoria}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$categoria->nomecategoria}}</td>
 
                         @php
                             $role = Auth::user()->role ?? 'cliente'; // Garante que sempre tenha um valor
                         @endphp
 
                         @if (Auth::user()->role === 'admin')
-                            <td>
-                                <div class="d-flex justify-content-center">
+                            <td class="text-justify border border-gray-300 px-4 py-2">
+                                <div class="d-flex text-start">
                                     <!-- Botão para Ver Divisões -->
                                     <a href="{{ route('divisoes.show', ['categoria_id' => $categoria->id]) }}" class="btn btn-info me-2">
                                         Ver Divisões
@@ -128,21 +129,17 @@
                         @endif
 
                         @if($role === 'admin')
-                            <td>
-                                <div class="d-flex justify-content-center">
+                            <td class="text-justify border border-gray-300 px-4 py-2">
+                                <div class="d-flex gap-1">
                                     <form action="{{route('categorias.edit', ['id' => $categoria->id])}}" method="get">
                                         @csrf
-                                        <input type="submit" class="btn btn-info me-2" name="formulario" value="Editar">
+                                        <input type="submit" class="btn btn-primary btn-sm" name="formulario" value="Editar">
                                     </form>
-                                </div>
-                            </td>
 
-                            <td>
-                                <div class="d-flex justify-content-center">
                                     <form id="formExcluir" action="{{ route('categorias.delete', ['id' => $categoria->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <input type="submit" class="btn btn-success me-2" value="Excluir" onclick="return confirmarExclusao();">
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Excluir" onclick="return confirmarExclusao();">
                                     </form>
                                 </div>
                             </td>

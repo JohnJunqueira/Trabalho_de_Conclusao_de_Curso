@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <head>
+            <link rel="icon" href="{{ asset('images/my-favicon.ico/iconecorte.png') }}" type="image/x-icon">
+        </head>
+
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -31,6 +35,9 @@
             <main>
                 {{ $slot }}
             </main>
+
+
+
         </div>
     </body>
 </html>

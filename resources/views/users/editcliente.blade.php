@@ -23,7 +23,7 @@
                         <td><input type="email" name="email" id="email"  class="form-control" value="{{ $user->email }}" required></td>
                     </tr>
                     <tr>
-                        <td><label for="apelidoprofissional" class="fw-bold">Apelido Profissional:</label></td>
+                        <td><label for="apelidoprofissional" class="fw-bold">Apelido:</label></td>
                         <td><input type="text" name="apelidoprofissional" id="apelidoprofissional" class="form-control" value="{{ $user->apelidoprofissional }}" required></td>
                     </tr>
                     <tr>

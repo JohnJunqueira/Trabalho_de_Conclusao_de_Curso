@@ -2,6 +2,10 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <head>
+        <link rel="icon" href="{{ asset('images/my-favicon.ico/iconecorte.png') }}" type="image/x-icon">
+    </head>
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -32,16 +36,24 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="mt-4 text-center">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+               <!-- <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Esqueceu a sua senha?') }}
                 </a>
-            @endif
+            @endif -->
 
             <x-primary-button class="ms-3">
                 {{ __('Entrar') }}
             </x-primary-button>
         </div>
+
+        <div class="mt-4 text-center">
+            <span class="text-sm text-gray-600">Ainda não tem uma conta?</span>
+            <a class="underline text-sm text-indigo-600 hover:text-indigo-900" href="{{ route('register') }}">
+                {{ __('Criar uma conta') }}
+            </a>
+        </div>
+
     </form>
 </x-guest-layout>

@@ -11,7 +11,7 @@
 
         <!-- Apelido Profissional -->
         <div class="mt-4">
-            <x-input-label for="apelidoprofissional" :value="__('Apelido Profissional*')" />
+            <x-input-label for="apelidoprofissional" :value="__('Apelido*')" />
             <x-text-input id="apelidoprofissional" class="block mt-1 w-full" type="text" name="apelidoprofissional" :value="old('apelidoprofissional')" required autofocus autocomplete="apelidoprofissional" />
             <x-input-error :messages="$errors->get('apelidoprofissional')" class="mt-2" />
         </div>

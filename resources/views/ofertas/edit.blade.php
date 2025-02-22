@@ -49,7 +49,7 @@
         </svg>
     </div>
 
-    <h1>Editar sua Oferta de Serviço</h1><br>
+    <h1 class="text-center">Edite sua Oferta de Serviço</h1><br>
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row d-flex justify-content-around ">

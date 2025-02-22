@@ -49,9 +49,10 @@
     </a>
 
 
-    <h1>Ofertas</h1><br>
 
-    <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
+    <h1 class="text-center">Ofertas</h1><br>
+
+
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
             </div>
@@ -61,42 +62,43 @@
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
-                        <th>Oferta</th>
-                        <th>Descrição da Oferta</th>
-                        <th>Urgência</th>
-                        <th>Valor Estimado</th>
-                        <th>Data Publicação</th>
-                        <th>Data Limite</th>
-                        <th>Status</th>
-                        <th>Local do serviço (Endereço)</th>
-                        <th>Contato Principal</th>
-                        <th>Outras Formas de Contato</th>
-                        <th>Frequência</th>
-                        <th>Dias e Horários de Preferência</th>
-                        <th>Categoria</th>
-                        <th>Divisão da Categoria</th>
-                        <th>Usuário</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Oferta</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Descrição da Oferta</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Urgência</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Valor Estimado</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Data Publicação</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Data Limite</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Status</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Local do serviço (Endereço)</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Contato Principal</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Outras Formas de Contato</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Frequência</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Dias e Horários de Preferência</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Categoria</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Divisão da Categoria</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Cliente</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Opções</th>
                     </tr>
                 </thead>
 
                 @foreach ($ofertas as $oferta)
                 <tbody class="conteudo-itens">
                     <tr>
-                        <td>{{$oferta->titulodaoferta}}</td>
-                        <td>{{$oferta->descricaodaoferta}}</td>
-                        <td>{{$oferta->urgencia}}</td>
-                        <td>{{$oferta->valorestimado}}</td>
-                        <td>{{ \Carbon\Carbon::parse($oferta->datapublicacao)->format('d/m/Y H:i') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($oferta->datalimite)->format('d/m/Y') }}</td>
-                        <td>{{$oferta->status}}</td>
-                        <td>{{$oferta->localizacao}}</td>
-                        <td>{{$oferta->contatodisponivel}}</td>
-                        <td>{{$oferta->outroscontatos}}</td>
-                        <td>{{$oferta->frequencia}}</td>
-                        <td>{{$oferta->preferenciacliente}}</td>
-                        <td>{{$oferta->acessarCategoria->nomecategoria}}</td>
-                        <td>{{$oferta->acessarDivisao->nomedivisoes}}</td>
-                        <td>{{$oferta->acessarUsuario->name}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->titulodaoferta}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->descricaodaoferta}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->urgencia}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->valorestimado}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{ \Carbon\Carbon::parse($oferta->datapublicacao)->format('d/m/Y H:i') }}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{ \Carbon\Carbon::parse($oferta->datalimite)->format('d/m/Y') }}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->status}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->localizacao}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->contatodisponivel}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->outroscontatos}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->frequencia}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->preferenciacliente}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->acessarCategoria->nomecategoria}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->acessarDivisao->nomedivisoes}}</td>
+                        <td class="text-justify border border-gray-300 px-4 py-2">{{$oferta->acessarUsuario->name}}</td>
 
                         @php
                             $user = auth()->user();
@@ -104,21 +106,17 @@
 
                         <!-- Verifica se o usuário é Admin ou Prestador -->
                         @if ($user && ($user->role === 'admin' || $user->role === 'cliente'))
-                            <td>
-                                <div class="col" id="meio">
+                            <td class="text-justify border border-gray-300 px-4 py-2">
+                                <div class="d-flex gap-1">
                                     <form action="{{route('ofertas.edit', ['id' => $oferta->id])}}" method="get">
                                         @csrf
-                                        <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
+                                        <input type="submit" class="btn btn-primary btn-sm" name="formulario" value="Editar">
                                     </form>
-                                </div>
-                            </td>
 
-                            <td>
-                                <div class="col" id="meio">
                                     <form id="formExcluir" action="{{ route('ofertas.delete', ['id' => $oferta->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Excluir" onclick="return confirmarExclusao();"><br><br>
                                     </form>
                                 </div>
                             </td>
@@ -140,8 +138,6 @@
                 </form>
             @endif
         </div>
-    </div>
-
 </div>
 
 <!-- Modal -->

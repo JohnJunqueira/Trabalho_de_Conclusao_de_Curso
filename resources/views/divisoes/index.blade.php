@@ -48,50 +48,47 @@
         </svg>
     </a>
 
-    <h1>Divisões</h1><br>
+    <h1 class="text-center">Categorias e suas Divisões</h1><br>
 
-    <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
             </div>
         </div>
 
         <div class="row m-3">
-            @if (!empty($divisoes) && count($divisoes) > 0)  
+            @if (!empty($divisoes) && count($divisoes) > 0)
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
-                        <th>Divisões</th>
-                        <th>Categorias</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Categorias</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Divisões</th>
+                        <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Editar/Excluir</th>
+
                     </tr>
                 </thead>
 
                 @foreach ($divisoes as $divisao)
                     <tbody class="conteudo-itens">
                         <tr>
-                            <td>{{$divisao->nomedivisoes}}</td>
-                            <td>{{$divisao->acessarcategoria->nomecategoria}}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{$divisao->acessarcategoria->nomecategoria}}</td>
+                            <td class="text-justify border border-gray-300 px-4 py-2">{{$divisao->nomedivisoes}}</td>
 
                             @php
                                 $role = Auth::user()->role ?? 'cliente'; // Garante que sempre tenha um valor
                             @endphp
 
                             @if($role === 'admin')
-                                <td>
-                                    <div class="col" id="meio">
+                                <td class="text-justify border border-gray-300 px-4 py-2">
+                                    <div class="d-flex gap-1">
                                         <form action="{{route('divisoes.edit', ['id' => $divisao->id])}}" method="get">
                                             @csrf
-                                            <input type="submit" class="btn btn-primary" name="formulario" value="Editar">
+                                            <input type="submit" class="btn btn-primary btn-sm" name="formulario" value="Editar">
                                         </form>
-                                    </div>
-                                </td>
 
-                                <td>
-                                    <div class="col" id="meio">
                                         <form id="formExcluir" action="{{ route('divisoes.delete', ['id' => $divisao->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <input type="submit" class="btn btn-primary" value="Excluir" onclick="return confirmarExclusao();"><br><br>
+                                            <input type="submit" class="btn btn-danger btn-sm" value="Excluir" onclick="return confirmarExclusao();"><br><br>
                                         </form>
                                     </div>
                                 </td>
@@ -107,7 +104,6 @@
         <div class="col-lg-12 me-3 d-flex justify-content-end me-3" style="text-align:right">
             <a href="{{ route ('categorias.index') }}" class="btn btn-secondary me-5 mb-5" style="color: #fff;">Voltar</a>
         </div>
-    </div>
 </div>
 
 <!-- Modal -->

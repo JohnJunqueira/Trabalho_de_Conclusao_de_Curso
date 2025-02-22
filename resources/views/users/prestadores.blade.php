@@ -10,30 +10,31 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nome Completo</th>
-                <th>Email</th>
-                <th>Apelido Profissional</th>
-                <th>Gênero</th>
-                <th>Data de Nascimento</th>
-                <th>Celular</th>
+                <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Nome Completo</th>
+                <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Email</th>
+                <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Apelido Profissional</th>
+                <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Gênero</th>
+                <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Data de Nascimento</th>
+                <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Celular</th>
+                <th class="text-start border border-gray-300 px-4 py-2" style="width: 400px;">Ações para Admin</th>
             </tr>
         </thead>
         <tbody>
             @foreach($prestadores as $prestador)
                 <tr>
-                    <td>{{ $prestador->name }}</td>
-                    <td>{{ $prestador->email }}</td>
-                    <td>{{ $prestador->apelidoprofissional }}</td>
-                    <td>{{ $prestador->genero }}</td>
-                    <td>{{ $prestador->datadenascimento }}</td>
-                    <td>{{ $prestador->celular }}</td>
-                    <td>
+                    <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->name }}</td>
+                    <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->email }}</td>
+                    <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->apelidoprofissional }}</td>
+                    <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->genero }}</td>
+                    <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->datadenascimento }}</td>
+                    <td class="text-justify border border-gray-300 px-4 py-2">{{ $prestador->celular }}</td>
+                    <td class="text-justify border border-gray-300 px-4 py-2">
 
                         <!-- Botão Ver Serviços -->
-                        <a href="{{ route('servicos.index', $prestador->id) }}" class="btn btn-warning">Ver Serviços</a>
+                        <a href="{{ route('servicos.index', $prestador->id) }}" class="btn btn-warning">Ver Serviços</a><br>
 
                         <!-- Botão Editar -->
-                        <a href="{{ route('users.edit', $prestador->id) }}" class="btn btn-warning">Editar</a>
+                        <a href="{{ route('users.edit', $prestador->id) }}" class="btn btn-warning">Editar</a><br>
 
                         <!-- Botão Excluir -->
                         <form action="{{ route('users.destroy', $prestador->id) }}" method="POST" style="display:inline;">
